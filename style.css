@@ -154,3 +154,80 @@ footer { text-align: center; padding: 8px 16px 40px; color: var(--muted); font-s
 @media(max-width:640px){.journey{margin-left:-12px;margin-right:-12px}.journey-step{padding:7px 8px}.journey-step:not(.active){font-size:0}.journey-step:not(.active) b{font-size:15px}.quick-actions{grid-template-columns:1fr}.quick-action{min-height:52px}.section-head{align-items:stretch;flex-direction:column}.section-head>.btn{align-self:flex-start}.mode-current{align-self:flex-start}.current-mode{font-size:12px}.detail-section{margin-top:28px}details.optional summary{align-items:flex-start}.recipe-filters{top:45px;overflow-x:auto;flex-wrap:nowrap}.recipe-filters .chip{flex:0 0 auto}}
 .mobile-nav{display:none}
 @media(max-width:640px){.mobile-nav{position:fixed;display:grid;grid-template-columns:repeat(4,1fr);left:10px;right:10px;bottom:10px;z-index:50;background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:6px}.mobile-nav a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 4px;border-radius:12px;color:var(--muted);text-decoration:none;font-size:17px}.mobile-nav a:hover,.mobile-nav a:focus{background:var(--chip);color:var(--fg)}.mobile-nav small{font-size:10px}.mobile-nav+footer{padding-bottom:90px}}
+
+/* Batch 11 · field mode */
+.scene-view-switch{display:flex;gap:8px;position:sticky;top:48px;z-index:12;padding:8px 0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px)}
+.scene-view-switch .chip{cursor:pointer}
+.field-tip{margin-top:18px;border-left:4px solid var(--accent)}
+.field-tip h3{margin-top:0}.field-tip ul{margin:8px 0 0;padding-left:20px}.field-tip li{padding:4px 0;color:var(--muted)}
+.field-more{margin-top:28px;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
+.field-more>summary{cursor:pointer;padding:16px;font-weight:700;list-style:none}.field-more>summary::-webkit-details-marker{display:none}
+.field-more-inner{padding:0 16px 20px;border-top:1px solid var(--line)}
+@media(max-width:640px){.scene-view-switch{top:45px;overflow-x:auto;flex-wrap:nowrap}.scene-view-switch .chip{flex:0 0 auto}.field-tip{font-size:13px}}
+
+/* Batch 12 · UX polish */
+/* All tappable chips/buttons use centered labels to prevent text drifting on mobile. */
+.chip,
+.filters .chip,
+.chips .chip,
+.scene-view-switch .chip {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1.35;
+  vertical-align:middle;
+}
+.filters { justify-content:center; }
+.filters .chip { min-height:38px; }
+.capture-note-grid .chips { justify-content:center; }
+.capture-note-grid .chips .chip { min-width:58px; }
+
+/* Homepage: quick scene finder shows the one-glance adjustment instead of internal IDs. */
+.scene-shortcuts {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:14px;
+}
+.scene-shortcut {
+  min-height:82px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:6px;
+  padding:12px 10px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--surface);
+  color:var(--fg);
+  text-decoration:none;
+  box-sizing:border-box;
+}
+.scene-shortcut:hover,
+.scene-shortcut:focus-visible { background:var(--chip); }
+.scene-shortcut strong { font-size:14px; line-height:1.35; }
+.scene-shortcut small {
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.45;
+  max-width:100%;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+}
+
+@media(max-width:700px){
+  .scene-shortcuts { grid-template-columns:repeat(2,1fr); }
+  .scene-shortcut { min-height:88px; }
+}
+@media(max-width:400px){
+  .scene-shortcuts { gap:8px; }
+  .scene-shortcut { padding:10px 8px; }
+  .scene-shortcut strong { font-size:13px; }
+  .scene-shortcut small { font-size:10px; }
+}
+.filters .chip { flex:0 0 auto; }
