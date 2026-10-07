@@ -1,0 +1,561 @@
+{
+  "schemaVersion": "1.0.0",
+  "model": {
+    "principle": "Photographic Style 是跨拍攝及後製的同一風格系統。",
+    "stages": [
+      "capture",
+      "edit"
+    ],
+    "controls": [
+      {
+        "id": "style",
+        "name": "Style",
+        "nameZh": "風格"
+      },
+      {
+        "id": "tone",
+        "name": "Tone",
+        "nameZh": "色調"
+      },
+      {
+        "id": "color",
+        "name": "Color",
+        "nameZh": "顏色"
+      },
+      {
+        "id": "palette",
+        "name": "Palette",
+        "nameZh": "強度／Palette"
+      },
+      {
+        "id": "texture",
+        "name": "Texture",
+        "nameZh": "質感"
+      },
+      {
+        "id": "texture-amount",
+        "name": "Texture Amount",
+        "nameZh": "質感強度"
+      },
+      {
+        "id": "grain",
+        "name": "Grain",
+        "nameZh": "顆粒"
+      },
+      {
+        "id": "cinematic",
+        "name": "Cinematic",
+        "nameZh": "電影感強度"
+      }
+    ],
+    "importantDistinctions": [
+      "Style 的 Tone 不等同一般後製的 Tint。",
+      "Style 的 Color 不等同一般後製的 Saturation 或 Vibrance。",
+      "Style 的 Texture 不等同一般後製的 Sharpness 或 Definition。",
+      "Cinematic 是 Photographic Style／Film 相關控制，不是獨立的一般 Adjustment。"
+    ],
+    "styleCount": 14
+  },
+  "styles": [
+    {
+      "id": "natural",
+      "name": "Natural",
+      "nameZh": "自然",
+      "family": "photographic-style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "保留自然色彩及原本光影層次。",
+      "controls": {
+        "tone": {
+          "type": "numeric",
+          "default": 0
+        },
+        "color": {
+          "type": "numeric",
+          "default": 0
+        },
+        "palette": {
+          "type": "numeric",
+          "default": 0
+        },
+        "texture": {
+          "type": "preset",
+          "default": "standard"
+        },
+        "textureAmount": {
+          "type": "numeric",
+          "default": 0
+        },
+        "grain": {
+          "type": "preset",
+          "default": "off"
+        },
+        "cinematic": {
+          "type": "numeric",
+          "default": 0
+        }
+      },
+      "captureUsage": [
+        "黎明／日出",
+        "藍天",
+        "星空／銀河",
+        "月亮特寫",
+        "山景／大景深",
+        "海景／海浪",
+        "建築／古蹟",
+        "街拍／行人",
+        "食物／餐廳",
+        "花卉／微距"
+      ],
+      "source": "Photographer-V2"
+    },
+    {
+      "id": "luminous",
+      "name": "Luminous",
+      "nameZh": "明亮",
+      "family": "photographic-style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "提升明亮、通透及光感。",
+      "controls": {
+        "tone": {
+          "type": "numeric"
+        },
+        "color": {
+          "type": "numeric"
+        },
+        "palette": {
+          "type": "numeric"
+        },
+        "texture": {
+          "type": "preset"
+        },
+        "textureAmount": {
+          "type": "numeric"
+        },
+        "grain": {
+          "type": "preset"
+        },
+        "cinematic": {
+          "type": "numeric"
+        }
+      },
+      "captureUsage": [
+        "陰天",
+        "背光",
+        "陰暗環境",
+        "環境人像",
+        "移軸微型感",
+        "日系清新",
+        "花卉／微距"
+      ],
+      "source": "Photographer-V2"
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "nameZh": "金色",
+      "family": "photographic-style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "增加暖金色氛圍，適合夕陽及暖色場景。",
+      "controls": {
+        "tone": {
+          "type": "numeric"
+        },
+        "color": {
+          "type": "numeric"
+        },
+        "palette": {
+          "type": "numeric"
+        },
+        "texture": {
+          "type": "preset"
+        },
+        "textureAmount": {
+          "type": "numeric"
+        },
+        "grain": {
+          "type": "preset"
+        },
+        "cinematic": {
+          "type": "numeric"
+        }
+      },
+      "captureUsage": [
+        "黎明／日出",
+        "夕陽／日落",
+        "人像",
+        "海景／海浪",
+        "食物／餐廳"
+      ],
+      "source": "Photographer-V2"
+    },
+    {
+      "id": "amber",
+      "name": "Amber",
+      "nameZh": "琥珀",
+      "family": "photographic-style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "比 Gold 更偏暖及琥珀色。",
+      "controls": {
+        "tone": {
+          "type": "numeric"
+        },
+        "color": {
+          "type": "numeric"
+        },
+        "palette": {
+          "type": "numeric"
+        },
+        "texture": {
+          "type": "preset"
+        },
+        "textureAmount": {
+          "type": "numeric"
+        },
+        "grain": {
+          "type": "preset"
+        },
+        "cinematic": {
+          "type": "numeric"
+        }
+      },
+      "captureUsage": [
+        "夕陽／日落"
+      ],
+      "source": "Photographer-V2"
+    },
+    {
+      "id": "light",
+      "name": "Light",
+      "nameZh": "輕盈",
+      "family": "photographic-style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "偏明亮、柔和及輕盈的視覺方向。",
+      "controls": {
+        "tone": {
+          "type": "numeric"
+        },
+        "color": {
+          "type": "numeric"
+        },
+        "palette": {
+          "type": "numeric"
+        },
+        "texture": {
+          "type": "preset"
+        },
+        "textureAmount": {
+          "type": "numeric"
+        },
+        "grain": {
+          "type": "preset"
+        },
+        "cinematic": {
+          "type": "numeric"
+        }
+      },
+      "captureUsage": [
+        "陰天",
+        "日系清新"
+      ],
+      "source": "Photographer-V2"
+    },
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "nameZh": "寧靜",
+      "family": "photographic-style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "較克制、低調的色彩方向。",
+      "controls": {
+        "tone": {
+          "type": "numeric"
+        },
+        "color": {
+          "type": "numeric"
+        },
+        "palette": {
+          "type": "numeric"
+        },
+        "texture": {
+          "type": "preset"
+        },
+        "textureAmount": {
+          "type": "numeric"
+        },
+        "grain": {
+          "type": "preset"
+        },
+        "cinematic": {
+          "type": "numeric"
+        }
+      },
+      "captureUsage": [
+        "街拍／行人"
+      ],
+      "source": "Photographer-V2"
+    },
+    {
+      "id": "dramatic",
+      "name": "Dramatic",
+      "nameZh": "戲劇",
+      "family": "photographic-style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "增加明暗及色彩戲劇感。",
+      "controls": {
+        "tone": {
+          "type": "numeric"
+        },
+        "color": {
+          "type": "numeric"
+        },
+        "palette": {
+          "type": "numeric"
+        },
+        "texture": {
+          "type": "preset"
+        },
+        "textureAmount": {
+          "type": "numeric"
+        },
+        "grain": {
+          "type": "preset"
+        },
+        "cinematic": {
+          "type": "numeric"
+        }
+      },
+      "captureUsage": [
+        "城市夜景",
+        "燈光星芒",
+        "建築／古蹟",
+        "移軸微型感"
+      ],
+      "source": "Photographer-V2"
+    },
+    {
+      "id": "vibrant",
+      "name": "Vibrant",
+      "nameZh": "鮮豔",
+      "family": "photographic-style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "增加色彩活力，適合需要更鮮明色彩的場景。",
+      "controls": {
+        "tone": {
+          "type": "numeric"
+        },
+        "color": {
+          "type": "numeric"
+        },
+        "palette": {
+          "type": "numeric"
+        },
+        "texture": {
+          "type": "preset"
+        },
+        "textureAmount": {
+          "type": "numeric"
+        },
+        "grain": {
+          "type": "preset"
+        },
+        "cinematic": {
+          "type": "numeric"
+        }
+      },
+      "captureUsage": [
+        "藍天",
+        "移軸微型感",
+        "街拍／行人"
+      ],
+      "source": "Photographer-V2"
+    },
+    {
+      "id": "standard",
+      "name": "Standard",
+      "nameZh": "標準",
+      "family": "photographic-style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "作為調色基礎，不額外加入明顯風格。",
+      "controls": {
+        "tone": {
+          "type": "numeric",
+          "default": 0
+        },
+        "color": {
+          "type": "numeric",
+          "default": 0
+        },
+        "palette": {
+          "type": "numeric",
+          "default": 0
+        },
+        "texture": {
+          "type": "preset",
+          "default": "standard"
+        },
+        "textureAmount": {
+          "type": "numeric",
+          "default": 0
+        },
+        "grain": {
+          "type": "preset",
+          "default": "off"
+        },
+        "cinematic": {
+          "type": "numeric",
+          "default": 0
+        }
+      },
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "soft-skin",
+      "name": "Soft Skin",
+      "nameZh": "柔膚",
+      "family": "texture",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "Photographic Style 的 Texture 選項之一，偏向柔化皮膚質感。",
+      "source": "Photographer-V2 / Photo-Adjustment"
+    },
+    {
+      "id": "glow",
+      "name": "Glow",
+      "nameZh": "光暈",
+      "family": "texture",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "Photographic Style 的 Texture 選項之一，增加柔和光感。",
+      "source": "Photographer-V2 / Photo-Adjustment"
+    },
+    {
+      "id": "film",
+      "name": "Film",
+      "nameZh": "電影／菲林質感",
+      "family": "texture",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "Photographic Style 的 Texture 選項之一；Cinematic 強度屬於此風格系統的控制，而非獨立 Adjustment。",
+      "source": "Photographer-V2 / Photo-Adjustment"
+    },
+    {
+      "id": "japanese-fresh",
+      "name": "Japanese Fresh",
+      "nameZh": "日系清新",
+      "family": "japanese",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "description": "明亮、清新、低顆粒及柔和質感的日系方向。",
+      "controls": {
+        "baseStyle": "light",
+        "tone": {
+          "type": "range",
+          "recommended": "+10～+20"
+        },
+        "color": {
+          "type": "range",
+          "recommended": "約 -10"
+        },
+        "palette": {
+          "type": "numeric"
+        },
+        "texture": {
+          "type": "preset-or-range",
+          "recommended": [
+            "standard",
+            "soft-skin"
+          ]
+        },
+        "textureAmount": {
+          "type": "numeric"
+        },
+        "grain": {
+          "type": "preset",
+          "recommended": "off"
+        },
+        "cinematic": {
+          "type": "numeric",
+          "recommended": 0
+        }
+      },
+      "captureUsage": [
+        "陰天",
+        "海景／海浪",
+        "人像",
+        "街拍／行人"
+      ],
+      "source": "Photographer-V2"
+    },
+    {
+      "id": "ethereal",
+      "name": "Ethereal",
+      "nameZh": "空靈",
+      "family": "custom",
+      "stage": [
+        "edit"
+      ],
+      "description": "Photo-Adjustment 原始方案使用的空靈／空氣感風格；保留原始名稱及數值。",
+      "controls": {
+        "baseStyle": "ethereal",
+        "tone": {
+          "type": "numeric"
+        },
+        "color": {
+          "type": "numeric"
+        },
+        "palette": {
+          "type": "numeric"
+        },
+        "texture": {
+          "type": "preset"
+        },
+        "textureAmount": {
+          "type": "numeric"
+        },
+        "grain": {
+          "type": "preset"
+        },
+        "cinematic": {
+          "type": "numeric"
+        }
+      },
+      "captureUsage": [],
+      "source": "Photo-Adjustment (source recipe)"
+    }
+  ]
+}

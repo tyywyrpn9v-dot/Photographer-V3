@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceCount": 16,
+  "sourceRecipes": [
+    "淡日",
+    "清新",
+    "淺海",
+    "青空",
+    "透亮",
+    "花海",
+    "暖劇",
+    "冷夏",
+    "銳片",
+    "冷調",
+    "林間",
+    "旅途",
+    "新綠",
+    "咖啡廳",
+    "摩天輪",
+    "海浪"
+  ],
+  "addedUserPresets": [
+    "japanese-a",
+    "japanese-b",
+    "japanese-c"
+  ],
+  "warnings": [
+    {
+      "recipe": "咖啡廳",
+      "field": "style.color",
+      "raw": "01",
+      "issue": "ambiguous numeric value; preserved verbatim"
+    }
+  ],
+  "sceneMap": {
+    "淡日": [
+      "sunrise",
+      "overcast",
+      "japanese-fresh"
+    ],
+    "清新": [
+      "overcast",
+      "japanese-fresh",
+      "macro",
+      "portrait"
+    ],
+    "淺海": [
+      "sunset",
+      "seascape",
+      "japanese-fresh"
+    ],
+    "青空": [
+      "blue-sky",
+      "seascape",
+      "mountain"
+    ],
+    "透亮": [
+      "blue-sky",
+      "architecture",
+      "japanese-fresh"
+    ],
+    "花海": [
+      "macro",
+      "japanese-fresh"
+    ],
+    "暖劇": [
+      "city-night",
+      "street",
+      "portrait"
+    ],
+    "冷夏": [
+      "blue-sky",
+      "seascape"
+    ],
+    "銳片": [
+      "city-night",
+      "street",
+      "architecture"
+    ],
+    "冷調": [
+      "overcast",
+      "city-night",
+      "street"
+    ],
+    "林間": [
+      "mountain",
+      "macro",
+      "japanese-fresh"
+    ],
+    "旅途": [
+      "street",
+      "architecture",
+      "mountain"
+    ],
+    "新綠": [
+      "macro",
+      "mountain",
+      "japanese-fresh"
+    ],
+    "咖啡廳": [
+      "food",
+      "japanese-fresh"
+    ],
+    "摩天輪": [
+      "city-night",
+      "starburst"
+    ],
+    "海浪": [
+      "seascape",
+      "sunset"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0.0",
+  "device": {
+    "id": "iphone-18-pro",
+    "name": "iPhone 18 Pro",
+    "type": "smartphone"
+  },
+  "lenses": {
+    "0.5x": {
+      "mm": "13mm",
+      "aperture": "f/2.2 固定",
+      "note": "超廣角。邊緣易變形，近拍人像慎用。"
+    },
+    "1x": {
+      "mm": "24mm",
+      "aperture": "f/1.48 / 1.8 / 2.8 / 4.0 可變",
+      "note": "主鏡。唯一可手動光圈；弱光首選 f/1.48。"
+    },
+    "2x": {
+      "mm": "48mm",
+      "aperture": "主鏡裁切，跟隨可變光圈",
+      "note": "人像、街拍常用。變形少於 1x。"
+    },
+    "4x": {
+      "mm": "100mm",
+      "aperture": "f/2.8 固定",
+      "note": "長焦棱鏡。月亮、壓縮透視、遠距人像。"
+    }
+  },
+  "opticalApertures": [
+    "f/1.48",
+    "f/1.8",
+    "f/2.8",
+    "f/4.0"
+  ],
+  "nativeShutter": {
+    "range": "約 1 秒 ～ 1/1600 秒",
+    "note": "以相機實際刻度為準（部分韌體可顯示更快）。超過 1 秒不是 Pro 快門，而是夜間模式或第三方 App。"
+  },
+  "formats": {
+    "recommended": [
+      "24MP HEIF",
+      "48MP HEIF Max",
+      "ProRAW"
+    ],
+    "note": "日常 24MP HEIF；日光細節 48MP HEIF Max；要後期用 ProRAW。夜景手持優先 24MP。"
+  },
+  "photographicStyleSystem": {
+    "name": "Photographic Styles",
+    "description": "Photographic Styles 3：色盤（Natural、Luminous、Gold、Amber、Light、Quiet、Dramatic、Vibrant 等）＋ Tone／Color pad ＋ Texture（Standard、Soft Skin、Glow、Film）＋ Grain。",
+    "controls": [
+      "style",
+      "tone",
+      "color",
+      "palette",
+      "texture",
+      "texture-amount",
+      "grain",
+      "cinematic"
+    ],
+    "stages": [
+      "capture",
+      "edit"
+    ],
+    "note": "Photographic Style 可於拍攝時設定，亦可於後製時修改；Tone、Color、Palette、Texture、Grain、Cinematic 均視為 Style controls，而非獨立的一般後製調整。"
+  },
+  "globalDefaults": [
+    "閃光燈預設關閉，除非要補光或凍結近距。",
+    "比例 4:3 保留最多像素，16:9 只在構圖需要時用。",
+    "格線與水平儀建議常開。",
+    "光學光圈只存在於 1x 主鏡；人像 Depth 是計算景深，兩者不要當成同一個滑桿。"
+  ],
+  "limits": {
+    "native": "原生相機可完成",
+    "night-mode": "需夜間模式長曝",
+    "third-party": "超過 1s 建議第三方 App",
+    "tripod": "建議腳架"
+  },
+  "source": {
+    "repository": "Photographer-V2",
+    "sourceFile": "guide.json"
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "schemaVersion": "1.0.0",
+  "parameters": [
+    {
+      "id": "aperture",
+      "label": "鏡頭光圈（光學）",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "optical",
+      "note": "僅 1x 主鏡有光學光圈控制",
+      "sourceLabel": "鏡頭光圈（光學）"
+    },
+    {
+      "id": "depth",
+      "label": "人像景深（計算）",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "computational",
+      "note": "計算景深，不等同光學光圈",
+      "sourceLabel": "人像景深（計算）"
+    },
+    {
+      "id": "shutter",
+      "label": "快門（原生 Pro）",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "exposure",
+      "note": "原生 Pro 快門；超過約 1 秒屬夜間模式或第三方 App",
+      "sourceLabel": "快門（原生 Pro）"
+    },
+    {
+      "id": "night",
+      "label": "夜間模式",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "exposure",
+      "note": "用於低光及長曝光",
+      "sourceLabel": "夜間模式"
+    },
+    {
+      "id": "ev",
+      "label": "曝光補償",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "exposure",
+      "note": "拍攝時調整整體曝光",
+      "sourceLabel": "曝光補償"
+    },
+    {
+      "id": "focus",
+      "label": "對焦",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "focus",
+      "note": "自動、鎖定或手動遠近對焦",
+      "sourceLabel": "對焦"
+    },
+    {
+      "id": "wb",
+      "label": "白平衡",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "color",
+      "note": "拍攝時控制色溫／白平衡",
+      "sourceLabel": "白平衡"
+    },
+    {
+      "id": "zoom",
+      "label": "鏡頭／變焦",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "lens",
+      "note": "選擇 0.5x、1x、2x、4x 等視角",
+      "sourceLabel": "鏡頭／變焦"
+    },
+    {
+      "id": "mp",
+      "label": "解析度",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "format",
+      "note": "24MP／48MP 等拍攝解析度",
+      "sourceLabel": "解析度"
+    },
+    {
+      "id": "format",
+      "label": "格式",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "format",
+      "note": "HEIF、HEIF Max、ProRAW 等",
+      "sourceLabel": "格式"
+    },
+    {
+      "id": "style",
+      "label": "Photographic Style（攝影風格）",
+      "type": "style",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "family": "style",
+      "note": "跨拍攝及後製的風格系統",
+      "sourceLabel": "攝影風格"
+    },
+    {
+      "id": "texture",
+      "label": "質感（Texture）",
+      "type": "style-control",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "family": "style",
+      "note": "Photographic Style 內的質感控制",
+      "sourceLabel": "質感 Texture"
+    },
+    {
+      "id": "grain",
+      "label": "顆粒（Grain）",
+      "type": "style-control",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "family": "style",
+      "note": "Photographic Style 內的顆粒控制",
+      "sourceLabel": "顆粒 Grain"
+    },
+    {
+      "id": "tone",
+      "label": "色調（Tone）",
+      "type": "style-control",
+      "stage": [
+        "capture",
+        "edit"
+      ],
+      "family": "style",
+      "note": "Photographic Style 內的色調控制；不要與後製 Tint 混淆",
+      "sourceLabel": "色調 Tone"
+    },
+    {
+      "id": "histogram",
+      "label": "長條圖",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "monitoring",
+      "note": "曝光判斷輔助",
+      "sourceLabel": "長條圖"
+    },
+    {
+      "id": "live",
+      "label": "原況照片",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "capture-mode",
+      "note": "動態影像／Live Photo",
+      "sourceLabel": "原況照片"
+    },
+    {
+      "id": "burst",
+      "label": "連拍",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "capture-mode",
+      "note": "快速連續拍攝",
+      "sourceLabel": "連拍"
+    },
+    {
+      "id": "timer",
+      "label": "計時器",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "capture-mode",
+      "note": "延遲拍攝",
+      "sourceLabel": "計時器"
+    },
+    {
+      "id": "grid",
+      "label": "格線／水平儀",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "composition",
+      "note": "構圖及水平輔助",
+      "sourceLabel": "格線／水平儀"
+    },
+    {
+      "id": "portrait-mode",
+      "label": "人像模式",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "capture-mode",
+      "note": "計算式景深拍攝模式",
+      "sourceLabel": "人像模式"
+    },
+    {
+      "id": "macro",
+      "label": "微距",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "capture-mode",
+      "note": "近距離微距拍攝",
+      "sourceLabel": "微距"
+    },
+    {
+      "id": "tripod",
+      "label": "腳架",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "accessory",
+      "note": "穩定長曝及夜景",
+      "sourceLabel": "腳架"
+    },
+    {
+      "id": "flash",
+      "label": "閃光燈",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "lighting",
+      "note": "近距補光或凍結動作",
+      "sourceLabel": "閃光燈"
+    },
+    {
+      "id": "aspect",
+      "label": "畫面比例",
+      "type": "camera",
+      "stage": [
+        "capture"
+      ],
+      "family": "composition",
+      "note": "4:3 保留最多原生影像範圍；其他比例按構圖需要使用",
+      "sourceLabel": "畫面比例"
+    }
+  ]
+}

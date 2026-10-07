@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1.0.0",
+  "presets": [
+    {
+      "id": "japanese-a",
+      "name": "日系調色 A",
+      "nameEn": "Japanese Color Grade A",
+      "type": "adjustment-preset",
+      "family": "japanese",
+      "stage": [
+        "edit"
+      ],
+      "description": "高對比、強自然飽和度及強烈黑點調整，配合暖色溫與明顯暈影。",
+      "adjustments": {
+        "exposure": 20,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": -25,
+        "contrast": 30,
+        "brightness": 0,
+        "black-point": -100,
+        "saturation": 0,
+        "vibrance": 45,
+        "warmth": 15,
+        "tint": 0,
+        "sharpness": 0,
+        "definition": 25,
+        "noise-reduction": 0,
+        "vignette": 30
+      },
+      "styleRefs": [
+        "japanese-fresh"
+      ],
+      "source": "User-provided"
+    },
+    {
+      "id": "japanese-b",
+      "name": "日系調色 B",
+      "nameEn": "Japanese Color Grade B",
+      "type": "adjustment-preset",
+      "family": "japanese",
+      "stage": [
+        "edit"
+      ],
+      "description": "高對比、較高飽和度、暖色溫及偏紫色調的日系調色。",
+      "adjustments": {
+        "exposure": 20,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": -25,
+        "contrast": 30,
+        "brightness": -10,
+        "black-point": 10,
+        "saturation": 30,
+        "vibrance": 0,
+        "warmth": 15,
+        "tint": -25,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 30
+      },
+      "styleRefs": [
+        "japanese-fresh"
+      ],
+      "source": "User-provided"
+    },
+    {
+      "id": "japanese-c",
+      "name": "日系調色 C",
+      "nameEn": "Japanese Color Grade C",
+      "type": "adjustment-preset",
+      "family": "japanese",
+      "stage": [
+        "edit"
+      ],
+      "description": "較深陰影、高對比、較高飽和度、暖色溫及偏紫色調的日系調色。",
+      "adjustments": {
+        "exposure": 20,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": -50,
+        "contrast": 30,
+        "brightness": -10,
+        "black-point": 10,
+        "saturation": 30,
+        "vibrance": 0,
+        "warmth": 20,
+        "tint": -20,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 30
+      },
+      "styleRefs": [
+        "japanese-fresh"
+      ],
+      "source": "User-provided"
+    }
+  ]
+}

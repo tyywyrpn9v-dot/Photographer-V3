@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.0.0",
+  "categories": [
+    {
+      "id": "light",
+      "name": "光線",
+      "type": "scene",
+      "stage": [
+        "capture"
+      ]
+    },
+    {
+      "id": "night",
+      "name": "夜拍",
+      "type": "scene",
+      "stage": [
+        "capture"
+      ]
+    },
+    {
+      "id": "water",
+      "name": "水",
+      "type": "scene",
+      "stage": [
+        "capture"
+      ]
+    },
+    {
+      "id": "people",
+      "name": "人物",
+      "type": "scene",
+      "stage": [
+        "capture"
+      ]
+    },
+    {
+      "id": "place",
+      "name": "風景",
+      "type": "scene",
+      "stage": [
+        "capture"
+      ]
+    },
+    {
+      "id": "motion",
+      "name": "動態",
+      "type": "scene",
+      "stage": [
+        "capture"
+      ]
+    },
+    {
+      "id": "still",
+      "name": "靜物",
+      "type": "scene",
+      "stage": [
+        "capture"
+      ]
+    }
+  ],
+  "styleFamilies": [
+    {
+      "id": "japanese",
+      "name": "日系",
+      "type": "style-family"
+    },
+    {
+      "id": "photographic-style",
+      "name": "Photographic Style",
+      "type": "style-family"
+    }
+  ],
+  "filters": [
+    {
+      "id": "all",
+      "name": "全部",
+      "type": "system"
+    },
+    {
+      "id": "saved",
+      "name": "收藏",
+      "type": "system"
+    },
+    {
+      "id": "capture",
+      "name": "拍攝",
+      "type": "stage"
+    },
+    {
+      "id": "edit",
+      "name": "後製",
+      "type": "stage"
+    },
+    {
+      "id": "capture-edit",
+      "name": "拍攝＋後製",
+      "type": "stage"
+    },
+    {
+      "id": "japanese",
+      "name": "日系",
+      "type": "style-family"
+    }
+  ]
+}

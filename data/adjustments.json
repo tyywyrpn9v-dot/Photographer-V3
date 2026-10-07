@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "1.0.0",
+  "stage": [
+    "edit"
+  ],
+  "group": "photos-adjustment",
+  "parameters": [
+    {
+      "id": "exposure",
+      "name": "曝光",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "brilliance",
+      "name": "鮮明度／增豔",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "highlights",
+      "name": "亮部",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "shadows",
+      "name": "陰影",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "contrast",
+      "name": "對比度",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "brightness",
+      "name": "亮度",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "black-point",
+      "name": "黑點",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "saturation",
+      "name": "飽和度",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "vibrance",
+      "name": "自然飽和度",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "warmth",
+      "name": "色溫",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "tint",
+      "name": "色調",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "sharpness",
+      "name": "銳利度",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "definition",
+      "name": "清晰度",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "noise-reduction",
+      "name": "雜訊消除",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "vignette",
+      "name": "暈影",
+      "type": "slider",
+      "stage": [
+        "edit"
+      ],
+      "unit": "slider-value",
+      "source": "Photo-Adjustment"
+    }
+  ]
+}

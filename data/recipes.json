@@ -1,0 +1,1030 @@
+{
+  "schemaVersion": "1.0.0",
+  "model": {
+    "recipePrinciple": "Recipe 是完整後製方案；內部分成 Photographic Style controls、一般 Photos Adjustments 及必要 extras。",
+    "cinematic": "Cinematic 屬 Photographic Style control。",
+    "userPresets": "日系調色 A/B/C 是 edit-stage adjustment presets。"
+  },
+  "recipes": [
+    {
+      "id": "danri",
+      "name": "淡日",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "natural",
+        "bright"
+      ],
+      "line": "☀️ 很亮 · ◐ 低對比 · 淡青",
+      "fit": "旅行、海邊、想要很亮。",
+      "avoid": "不要加飽和、顆粒、對比。",
+      "want": "很亮、很淡",
+      "image": "samples/pale-day.jpg",
+      "photographicStyle": {
+        "style": "標準（Standard）",
+        "tone": 22,
+        "color": -8,
+        "palette": 24,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": 22,
+        "brilliance": 0,
+        "highlights": -8,
+        "shadows": 28,
+        "contrast": -24,
+        "brightness": 14,
+        "black-point": 16,
+        "saturation": -14,
+        "vibrance": 0,
+        "warmth": -4,
+        "tint": -4,
+        "sharpness": 0,
+        "definition": -8,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "standard"
+      ],
+      "sceneRefs": [
+        "sunrise",
+        "overcast",
+        "japanese-fresh"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "qingxin",
+      "name": "清新",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "natural"
+      ],
+      "line": "👤 膚色乾淨 · 背景柔",
+      "fit": "窗邊、草地、白衣服。",
+      "avoid": "不要加鮮明度、顆粒、暖色。",
+      "want": "乾淨膚色、柔光",
+      "image": "samples/fresh.jpg",
+      "photographicStyle": {
+        "style": "標準（Standard）",
+        "tone": 12,
+        "color": -4,
+        "palette": 22,
+        "texture": "光暈（Glow）",
+        "textureAmount": 12,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": 8,
+        "brilliance": 4,
+        "highlights": -18,
+        "shadows": 16,
+        "contrast": -14,
+        "brightness": 8,
+        "black-point": 6,
+        "saturation": -8,
+        "vibrance": 4,
+        "warmth": -2,
+        "tint": -4,
+        "sharpness": 0,
+        "definition": -12,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "standard"
+      ],
+      "sceneRefs": [
+        "overcast",
+        "japanese-fresh",
+        "macro",
+        "portrait"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "qianhai",
+      "name": "淺海",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "natural",
+        "warm"
+      ],
+      "line": "🌅 粉紫天 · 青綠水",
+      "fit": "日落海、天色已經粉的時候。",
+      "avoid": "不要把暖色拉太高，海會變啡。",
+      "want": "海邊黃昏",
+      "image": "samples/pale-sea.jpg",
+      "photographicStyle": {
+        "style": "標準（Standard）",
+        "tone": 8,
+        "color": 8,
+        "palette": 30,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": 4,
+        "brilliance": 0,
+        "highlights": -16,
+        "shadows": 18,
+        "contrast": -16,
+        "brightness": 6,
+        "black-point": 8,
+        "saturation": -10,
+        "vibrance": 8,
+        "warmth": 6,
+        "tint": 0,
+        "sharpness": 0,
+        "definition": -6,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "standard"
+      ],
+      "sceneRefs": [
+        "sunset",
+        "seascape",
+        "japanese-fresh"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "qingtian",
+      "name": "青空",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "bright",
+        "natural"
+      ],
+      "line": "🌤️ 藍天有雲 · 顏色清楚",
+      "fit": "大晴天、草地、天台。",
+      "avoid": "不要把雲調沒，不要把草地調成螢光。",
+      "want": "晴天、藍天有雲",
+      "image": "samples/blue-sky.jpg",
+      "photographicStyle": {
+        "style": "標準（Standard）",
+        "tone": 8,
+        "color": -6,
+        "palette": 32,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": 14,
+        "brilliance": 4,
+        "highlights": -14,
+        "shadows": 10,
+        "contrast": -8,
+        "brightness": 6,
+        "black-point": 2,
+        "saturation": 4,
+        "vibrance": 12,
+        "warmth": -8,
+        "tint": -6,
+        "sharpness": 0,
+        "definition": -2,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "standard"
+      ],
+      "sceneRefs": [
+        "blue-sky",
+        "seascape",
+        "mountain"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "touliang",
+      "name": "透亮",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "bright"
+      ],
+      "line": "🔆 很亮 · 邊緣清楚",
+      "fit": "晴天、想要白但仍然利落。",
+      "avoid": "不要再開風格強度。皮膚爆掉就收曝光。",
+      "want": "很亮、清楚",
+      "image": "samples/bright.jpg",
+      "photographicStyle": {
+        "style": "標準（Standard）",
+        "tone": 0,
+        "color": 0,
+        "palette": 0,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": 40,
+        "brilliance": 30,
+        "highlights": 35,
+        "shadows": -20,
+        "contrast": -25,
+        "brightness": 40,
+        "black-point": 0,
+        "saturation": 0,
+        "vibrance": -10,
+        "warmth": 0,
+        "tint": 0,
+        "sharpness": 0,
+        "definition": 20,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "standard"
+      ],
+      "sceneRefs": [
+        "blue-sky",
+        "architecture",
+        "japanese-fresh"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "huahai",
+      "name": "花海",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "bright",
+        "warm"
+      ],
+      "line": "🌸 顏色出來 · 高光保住",
+      "fit": "花、草地。",
+      "avoid": "鮮明度 +66 很重。人像太豔就收。",
+      "want": "花海、顏色清楚",
+      "image": "samples/flower-sea.jpg",
+      "photographicStyle": {
+        "style": "標準（Standard）",
+        "tone": 0,
+        "color": 0,
+        "palette": 0,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": 15,
+        "brilliance": 66,
+        "highlights": -25,
+        "shadows": 20,
+        "contrast": -10,
+        "brightness": -22,
+        "black-point": 0,
+        "saturation": 24,
+        "vibrance": 0,
+        "warmth": 12,
+        "tint": 8,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "standard"
+      ],
+      "sceneRefs": [
+        "macro",
+        "japanese-fresh"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "nuanju",
+      "name": "暖劇",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "warm",
+        "drama"
+      ],
+      "line": "🎞️ Dramatic · 暖 · 顏色少",
+      "fit": "想要沉、暖的街或人像。",
+      "avoid": "不要再開濾鏡。亮部 -65 很壓。",
+      "want": "戲劇、暖、顏色少",
+      "image": "samples/warm-drama.jpg",
+      "photographicStyle": {
+        "style": "戲劇（Dramatic）",
+        "tone": "預設（Preset）",
+        "color": "預設（Preset）",
+        "palette": 85,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": 0,
+        "brilliance": -33,
+        "highlights": -65,
+        "shadows": 0,
+        "contrast": 45,
+        "brightness": 0,
+        "black-point": 0,
+        "saturation": -36,
+        "vibrance": 0,
+        "warmth": 23,
+        "tint": 28,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "dramatic"
+      ],
+      "sceneRefs": [
+        "city-night",
+        "street",
+        "portrait"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "lengxia",
+      "name": "冷夏",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "cool",
+        "bright"
+      ],
+      "line": "🧊 冷夏 · 低對比 · 微粉",
+      "fit": "夏天、藍天、皮膚可微粉。",
+      "avoid": "Tint +60 很重。太粉就改用青空。",
+      "want": "夏天、冷、低反差",
+      "image": "samples/cool-summer.jpg",
+      "photographicStyle": {
+        "style": "標準（Standard）",
+        "tone": 0,
+        "color": 0,
+        "palette": 0,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": -15,
+        "brilliance": 25,
+        "highlights": -15,
+        "shadows": 15,
+        "contrast": -50,
+        "brightness": 0,
+        "black-point": 0,
+        "saturation": 10,
+        "vibrance": -12,
+        "warmth": -35,
+        "tint": 60,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "standard"
+      ],
+      "sceneRefs": [
+        "blue-sky",
+        "seascape"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "ruipian",
+      "name": "銳片",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "cool",
+        "drama"
+      ],
+      "line": "🎞️ Dramatic · 略冷 · 有暈影",
+      "fit": "想要冷、利、有暗角。",
+      "avoid": "不要再加清晰度。強度用 90。",
+      "want": "冷底片、有暈影",
+      "image": "samples/sharp-film.jpg",
+      "photographicStyle": {
+        "style": "戲劇（Dramatic）",
+        "tone": "預設（Preset）",
+        "color": "預設（Preset）",
+        "palette": 90,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": -10,
+        "brilliance": 8,
+        "highlights": 20,
+        "shadows": -10,
+        "contrast": 0,
+        "brightness": 6,
+        "black-point": 10,
+        "saturation": 0,
+        "vibrance": -7,
+        "warmth": -15,
+        "tint": 0,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 10
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "dramatic"
+      ],
+      "sceneRefs": [
+        "city-night",
+        "street",
+        "architecture"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "lengdiao",
+      "name": "冷調",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "cool"
+      ],
+      "line": "❄️ Vivid Cool · 陰影打開",
+      "fit": "陰天、城市、想要冷而清楚。",
+      "avoid": "不要同冷夏疊。這組靠 Vibrant 偏冷。",
+      "want": "冷、陰影打開",
+      "image": "samples/cool-tone.jpg",
+      "photographicStyle": {
+        "style": "鮮豔（Vibrant）",
+        "tone": "預設（Preset）",
+        "color": -24,
+        "palette": 80,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": -25,
+        "brilliance": 0,
+        "highlights": 30,
+        "shadows": 45,
+        "contrast": -30,
+        "brightness": 40,
+        "black-point": 0,
+        "saturation": 0,
+        "vibrance": 0,
+        "warmth": 0,
+        "tint": 10,
+        "sharpness": 0,
+        "definition": 15,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "vibrant"
+      ],
+      "sceneRefs": [
+        "overcast",
+        "city-night",
+        "street"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "linjian",
+      "name": "林間",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "cool",
+        "drama"
+      ],
+      "line": "🌳 Dramatic · 略冷 · 樹蔭",
+      "fit": "樹、公園、綠葉。",
+      "avoid": "林間是陰影向上。銳片是陰影向下。",
+      "want": "樹林、略冷",
+      "image": "samples/forest.jpg",
+      "photographicStyle": {
+        "style": "戲劇（Dramatic）",
+        "tone": "預設（Preset）",
+        "color": "預設（Preset）",
+        "palette": 70,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": -10,
+        "brilliance": 20,
+        "highlights": 15,
+        "shadows": 10,
+        "contrast": -10,
+        "brightness": 0,
+        "black-point": 0,
+        "saturation": 0,
+        "vibrance": 10,
+        "warmth": -15,
+        "tint": 0,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 10
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "dramatic"
+      ],
+      "sceneRefs": [
+        "mountain",
+        "macro",
+        "japanese-fresh"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "lutu",
+      "name": "旅途",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "natural"
+      ],
+      "line": "🚶 Vivid Cool，開很輕",
+      "fit": "行路、城市。",
+      "avoid": "不要再加曝光。很亮用淡日。",
+      "want": "旅行、輕微冷",
+      "image": "samples/travel.jpg",
+      "photographicStyle": {
+        "style": "鮮豔（Vibrant）",
+        "tone": "預設（Preset）",
+        "color": -8,
+        "palette": 20,
+        "texture": "標準（Standard）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": -5,
+        "brilliance": 10,
+        "highlights": -10,
+        "shadows": 10,
+        "contrast": 8,
+        "brightness": 15,
+        "black-point": 14,
+        "saturation": 5,
+        "vibrance": 5,
+        "warmth": -5,
+        "tint": 10,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "vibrant"
+      ],
+      "sceneRefs": [
+        "street",
+        "architecture",
+        "mountain"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "xinlu",
+      "name": "新綠",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "natural",
+        "drama"
+      ],
+      "line": "🎞️ Dramatic + Film · 微綠",
+      "fit": "樹蔭、想要底片但仍然清。",
+      "avoid": "不要再加一層濾鏡。",
+      "want": "清新底片、微綠",
+      "image": "samples/new-green.jpg",
+      "photographicStyle": {
+        "style": "戲劇（Dramatic）",
+        "tone": 4,
+        "color": 39,
+        "palette": 37,
+        "texture": "菲林（Film）",
+        "textureAmount": 50,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "exposure": -10,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": 50,
+        "contrast": -5,
+        "brightness": 0,
+        "black-point": -10,
+        "saturation": 5,
+        "vibrance": -6,
+        "warmth": -2,
+        "tint": -8,
+        "sharpness": 10,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "dramatic"
+      ],
+      "sceneRefs": [
+        "macro",
+        "mountain",
+        "japanese-fresh"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "cafe",
+      "name": "咖啡廳",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "natural",
+        "bright"
+      ],
+      "line": "🎞️ 空靈 + 底片 · Palette 71",
+      "fit": "室內、窗光、想要空氣感。",
+      "avoid": "Color 01 很偏。太冷就往回拖。",
+      "want": "空靈底片",
+      "image": "samples/cafe.jpg",
+      "photographicStyle": {
+        "style": "空靈（Ethereal）",
+        "tone": 48,
+        "color": 1,
+        "palette": 71,
+        "texture": "底片（Film）",
+        "textureAmount": 0,
+        "grain": "關（Off）",
+        "cinematic": 70
+      },
+      "adjustments": {
+        "exposure": 0,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": 0,
+        "contrast": 0,
+        "brightness": 0,
+        "black-point": 0,
+        "saturation": 0,
+        "vibrance": 0,
+        "warmth": 0,
+        "tint": 0,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "ethereal"
+      ],
+      "sceneRefs": [
+        "food",
+        "japanese-fresh"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "ferris",
+      "name": "摩天輪",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "drama",
+        "warm"
+      ],
+      "line": "🎞️ 戲劇 + 底片 · 7500K",
+      "fit": "夜景、燈光、想要戲劇底片。",
+      "avoid": "陰影白平衡會偏暖。",
+      "want": "戲劇底片、7500K",
+      "image": "samples/ferris.jpg",
+      "photographicStyle": {
+        "style": "戲劇（Dramatic）",
+        "tone": 57,
+        "color": 57,
+        "palette": 50,
+        "texture": "底片（Film）",
+        "textureAmount": 0,
+        "grain": "關（Off）"
+      },
+      "adjustments": {
+        "white-balance": "7500K",
+        "exposure": 0,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": 0,
+        "contrast": 0,
+        "brightness": 0,
+        "black-point": 0,
+        "saturation": 0,
+        "vibrance": 0,
+        "warmth": 0,
+        "tint": 0,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "dramatic"
+      ],
+      "sceneRefs": [
+        "city-night",
+        "starburst"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "waves",
+      "name": "海浪",
+      "type": "recipe",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "warm",
+        "bright"
+      ],
+      "line": "🎞️ 金色 + 底片 · 長曝光",
+      "fit": "海、想要金色底片。要原況照片。",
+      "avoid": "不是原況照片就沒有長曝光。",
+      "want": "金色底片、長曝光",
+      "image": "samples/waves.jpg",
+      "photographicStyle": {
+        "style": "金色（Gold）",
+        "tone": 44,
+        "color": 25,
+        "palette": 75,
+        "texture": "底片（Film）",
+        "textureAmount": 0,
+        "grain": "關（Off）",
+        "cinematic": "50–60"
+      },
+      "adjustments": {
+        "live-photo": "長曝光（Long Exposure）",
+        "exposure": 0,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": 0,
+        "contrast": 0,
+        "brightness": 0,
+        "black-point": 0,
+        "saturation": 0,
+        "vibrance": 0,
+        "warmth": 0,
+        "tint": 0,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 0
+      },
+      "extras": {
+        "filter": "原片（Original）",
+        "portrait": "關（Off）"
+      },
+      "styleRefs": [
+        "gold"
+      ],
+      "sceneRefs": [
+        "seascape",
+        "sunset"
+      ],
+      "source": "Photo-Adjustment"
+    },
+    {
+      "id": "japanese-a",
+      "name": "日系調色 A",
+      "type": "adjustment-preset",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "japanese"
+      ],
+      "line": "",
+      "fit": "",
+      "avoid": "",
+      "want": "",
+      "image": null,
+      "photographicStyle": {},
+      "adjustments": {
+        "exposure": 20,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": -25,
+        "contrast": 30,
+        "brightness": 0,
+        "black-point": -100,
+        "saturation": 0,
+        "vibrance": 45,
+        "warmth": 15,
+        "tint": 0,
+        "sharpness": 0,
+        "definition": 25,
+        "noise-reduction": 0,
+        "vignette": 30
+      },
+      "extras": {},
+      "styleRefs": [
+        "japanese-fresh"
+      ],
+      "sceneRefs": [],
+      "source": "User-provided"
+    },
+    {
+      "id": "japanese-b",
+      "name": "日系調色 B",
+      "type": "adjustment-preset",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "japanese"
+      ],
+      "line": "",
+      "fit": "",
+      "avoid": "",
+      "want": "",
+      "image": null,
+      "photographicStyle": {},
+      "adjustments": {
+        "exposure": 20,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": -25,
+        "contrast": 30,
+        "brightness": -10,
+        "black-point": 10,
+        "saturation": 30,
+        "vibrance": 0,
+        "warmth": 15,
+        "tint": -25,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 30
+      },
+      "extras": {},
+      "styleRefs": [
+        "japanese-fresh"
+      ],
+      "sceneRefs": [],
+      "source": "User-provided"
+    },
+    {
+      "id": "japanese-c",
+      "name": "日系調色 C",
+      "type": "adjustment-preset",
+      "stage": [
+        "edit"
+      ],
+      "familyTags": [
+        "japanese"
+      ],
+      "line": "",
+      "fit": "",
+      "avoid": "",
+      "want": "",
+      "image": null,
+      "photographicStyle": {},
+      "adjustments": {
+        "exposure": 20,
+        "brilliance": 0,
+        "highlights": 0,
+        "shadows": -50,
+        "contrast": 30,
+        "brightness": -10,
+        "black-point": 10,
+        "saturation": 30,
+        "vibrance": 0,
+        "warmth": 20,
+        "tint": -20,
+        "sharpness": 0,
+        "definition": 0,
+        "noise-reduction": 0,
+        "vignette": 30
+      },
+      "extras": {},
+      "styleRefs": [
+        "japanese-fresh"
+      ],
+      "sceneRefs": [],
+      "source": "User-provided"
+    }
+  ],
+  "validationWarnings": [
+    {
+      "recipe": "咖啡廳",
+      "field": "style.color",
+      "raw": "01",
+      "issue": "ambiguous numeric value; preserved verbatim"
+    }
+  ]
+}
