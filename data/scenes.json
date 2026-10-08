@@ -1146,7 +1146,7 @@
       "source": "Photographer-V2",
       "fit": "昏暗室內、夜間街道及低光環境。",
       "avoid": "不要為了看清所有暗部而令燈光高光爆掉。",
-      "title": "dark"
+      "title": "暗光 Low Light"
     },
     {
       "id": "portrait",
@@ -1343,7 +1343,7 @@
       "source": "Photographer-V2",
       "fit": "旅遊、街拍、建築前人物及生活紀錄。",
       "avoid": "不要把背景壓得太散，否則環境資訊會消失。",
-      "title": "env-portrait"
+      "title": "環境人像 Environmental Portrait"
     },
     {
       "id": "tilt-shift",
@@ -1516,7 +1516,7 @@
       "source": "Photographer-V2",
       "fit": "窗邊、街道、植物、旅遊及日常生活。",
       "avoid": "不要同時大幅提升對比及飽和度，以免失去清透感。",
-      "title": "japanese-fresh"
+      "title": "日系清新 Japanese Fresh"
     },
     {
       "id": "mountain",
@@ -1680,7 +1680,7 @@
       "source": "Photographer-V2",
       "fit": "海邊、海浪、日出日落及晴天海景。",
       "avoid": "不要讓地平線傾斜；強反光海面要留意高光。",
-      "title": "seascape"
+      "title": "海景 Seascape"
     },
     {
       "id": "fog",
@@ -1750,7 +1750,7 @@
       "source": "Photographer-V2",
       "fit": "山霧、森林、城市霧景及雲海。",
       "avoid": "不要過度拉高對比或清晰度，否則霧感會消失。",
-      "title": "fog"
+      "title": "霧景 Fog"
     },
     {
       "id": "architecture",
@@ -1912,7 +1912,7 @@
       "source": "Photographer-V2",
       "fit": "城市街道、行人、店舖及生活紀錄。",
       "avoid": "不要為了每張照片完全手動設定而錯過瞬間；注意背景雜物。",
-      "title": "street"
+      "title": "街拍 Street"
     },
     {
       "id": "sports",
