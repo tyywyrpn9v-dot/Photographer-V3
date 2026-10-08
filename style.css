@@ -251,3 +251,19 @@ body,button,input,select,textarea{font-family:inherit}
 .settings-table td:first-child{line-height:1.45}
 .detail-head h1{font-weight:700;letter-spacing:0}
 @media(max-width:760px){.info-strip{grid-template-columns:1fr}.info-strip>div{min-height:0}}
+
+/* Batch 15 · navigation, filters and card interaction */
+.top-tabs{display:none!important}
+.mobile-nav{display:none!important}
+.filters{display:flex;flex-direction:column;gap:8px;overflow:visible;padding:10px 0 6px;align-items:stretch}
+.filter-row{display:flex;gap:8px;justify-content:flex-start;flex-wrap:wrap}
+.filter-row .chip{flex:0 0 auto;min-width:72px}
+.filter-primary .chip{font-weight:700}
+.badge-link{cursor:pointer;user-select:none}
+.badge-link:hover,.badge-link:focus-visible{outline:1px solid var(--accent);background:var(--accent);color:var(--accent-fg)}
+.item-card[data-open]{cursor:pointer}
+.item-card[data-open] .btn{pointer-events:auto;position:relative;z-index:2}
+.item-card .fav{position:relative;z-index:4}
+.item-card .badge-link{position:relative;z-index:4}
+.theme-switch button{display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1.2}
+@media(max-width:640px){.filter-row{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:2px}.filter-row .chip{flex:0 0 auto}.top nav{overflow:visible;white-space:normal}.top-inner{flex-wrap:nowrap}.theme-switch{flex-shrink:0}.guide-nav{flex:1}}
