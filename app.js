@@ -1,64 +1,356 @@
-const $=(s,e=document)=>e.querySelector(s);const app=$("#app");
-const THEME_KEY="iphone18proTheme.v4",FAV_KEY="iphone18proFavorites.v4",RECIPE_KEY="iphone18proRecipeFavorites.v2";
-const state={db:null,q:"",filter:"all",mode:localStorage.getItem('iphone18proMode.v2')||"photo",fav:new Set(JSON.parse(localStorage.getItem(FAV_KEY)||"[]")),recipeFav:new Set(JSON.parse(localStorage.getItem(RECIPE_KEY)||"[]"))};
-const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
-const route=()=>{const p=(location.hash.replace(/^#/,'')||'/').split('/').filter(Boolean);if(p[0]==='scene'&&p[1])return{name:'scene',id:p[1]};if(p[0]==='recipe'&&p[1])return{name:'recipe',id:p[1]};if(p[0]==='guide')return{name:'guide'};if(p[0]==='capture')return{name:'capture'};if(p[0]==='edit')return{name:'edit'};return{name:'all'}};
-function save(){localStorage.setItem(FAV_KEY,JSON.stringify([...state.fav]));localStorage.setItem(RECIPE_KEY,JSON.stringify([...state.recipeFav]));}
-function toggle(set,id){set.has(id)?set.delete(id):set.add(id);save();render()}
-function setMode(id){state.mode=id;localStorage.setItem('iphone18proMode.v2',id);render()}
-function setTheme(name){document.documentElement.dataset.theme=name;localStorage.setItem(THEME_KEY,name);document.querySelectorAll('[data-theme]').forEach(b=>b.classList.toggle('active',b.dataset.theme===name));document.querySelector('meta[name=theme-color]')?.setAttribute('content',{light:'#f3f1ec',dark:'#121110',outdoor:'#fff'}[name])}
-const badge=(s,tag)=>`<span class="badge ${tag?'badge-link':''}" ${tag?`data-tag-filter="${esc(tag)}"`:''}>${esc(s)}</span>`;
-const CAPTURE_LABELS={
- aperture:['🔘','光圈','Aperture'],depth:['👤','景深','Depth'],shutter:['⏱️','快門速度','Shutter Speed'],night:['🌙','夜間模式','Night Mode'],ev:['☀️','曝光','Exposure'],focus:['🎯','對焦','Focus'],wb:['🌡️','白平衡','White Balance'],zoom:['🔭','鏡頭／變焦','Lens / Zoom'],mp:['🖼️','解析度','Resolution'],format:['💾','格式','Format'],style:['🎨','攝影風格','Photographic Style'],texture:['🧵','質感','Texture'],grain:['🎞️','顆粒','Grain'],tone:['🎚️','色調','Tone'],histogram:['📊','長條圖','Histogram'],live:['🔴','原況照片','Live Photo'],burst:['📸','連拍','Burst'],timer:['⏲️','計時器','Timer'],grid:['▦','格線／水平儀','Grid / Level'],['portrait-mode']:['👤','人像模式','Portrait Mode'],macro:['🔬','微距','Macro'],tripod:['🦿','腳架','Tripod'],flash:['⚡','閃光燈','Flash'],aspect:['▣','畫面比例','Aspect Ratio']};
-const EDIT_LABELS={exposure:['☀️','曝光','Exposure'],brilliance:['✨','鮮明度','Brilliance'],highlights:['🔆','亮部','Highlights'],shadows:['🌘','陰影','Shadows'],contrast:['◐','對比度','Contrast'],brightness:['💡','亮度','Brightness'],'black-point':['⚫','黑點','Black Point'],saturation:['🎨','飽和度','Saturation'],vibrance:['🌈','自然飽和度','Vibrance'],warmth:['🌡️','色溫','Warmth'],tint:['🟣','色調','Tint'],sharpness:['🔪','銳度','Sharpness'],definition:['🔎','清晰度','Definition'],'noise-reduction':['🧹','雜訊消除','Noise Reduction'],vignette:['◉','暈影','Vignette']};
-const CAPTURE_GROUPS={optical:'鏡頭',computational:'人像',exposure:'曝光',focus:'對焦',color:'色彩',lens:'鏡頭',format:'格式',style:'風格',monitoring:'曝光監察','capture-mode':'拍攝功能',composition:'構圖',accessory:'器材',lighting:'光線'};
-const EFFECT_TAGS={natural:'自然',bright:'明亮',cool:'冷色',warm:'暖色',drama:'戲劇',japanese:'日系'};
-const SCENE_TAGS={'sunrise':['光線','暖色'],'blue-sky':['風景','明亮'],overcast:['風景','冷色'],sunset:['光線','暖色'],'milky-way':['夜景','冷色'],moon:['夜景'],'city-night':['夜景','暖色'],'car-trails':['夜景','動態'],'silky-water':['風景','水'],'water-splash':['風景','動態'],'starburst':['夜景'],'backlight':['光線'],portrait:['人物'],'env-portrait':['人物'],'tilt-shift':['風景'],'japanese-fresh':['日系','明亮'],mountain:['風景'],seascape:['風景','暖色'],fog:['風景','冷色'],architecture:['風景'],street:['風景'],sports:['動態'],food:['食物','暖色'],macro:['微距','自然'],'video-24p':['影片']};
-function dataMaps(){const d=state.db;return{scenes:new Map(d.scenes.scenes.map(x=>[x.id,x])),styles:new Map(d.styles.styles.map(x=>[x.id,x])),recipes:new Map(d.recipes.recipes.map(x=>[x.id,x])),workflows:new Map(d.workflows.workflows.map(x=>[x.id,x]))}}
-function sceneTitle(s){return s.title||s.name}
-function stageTag(stage){return stage==='capture'?badge('📷 拍攝','拍攝'):badge('✏️ 後製','後製')}
-function captureName(id){const x=CAPTURE_LABELS[id];return x?`${x[0]} ${x[1]} (${x[2]})`:id}
-function editName(id){const x=EDIT_LABELS[id];return x?`${x[0]} ${x[1]} (${x[2]})`:id}
-function cleanValue(id,value){if(id==='histogram')return '';if(id==='format')return String(value).replace(/HEIF Max 或 /g,'');if(id==='aspect')return String(value);return value}
-function oneGlanceCapture(s){const rows=[...(s.must||[]),...(s.options||[])].filter(r=>!['style','histogram','format','aspect'].includes(r.id));const seen=new Set();return rows.map(r=>{if(seen.has(r.id))return null;seen.add(r.id);const v=cleanValue(r.id,r.value);return v?`${captureName(r.id).split(' (')[0]} ${v}`:null}).filter(Boolean).slice(0,5).join(' · ')}
-function sceneTags(s){return ['📷 拍攝',...(SCENE_TAGS[s.id]||s.categories?.map(c=>c.name)||[])].map(x=>badge(x,x==='📷 拍攝'?'拍攝':x)).join('')}
-function recipeTags(r){const extra=r.id.startsWith('japanese-')?['日系']:[];return ['✏️ 後製',...(r.familyTags||[]).map(x=>EFFECT_TAGS[x]||x),...extra].filter((x,i,a)=>a.indexOf(x)===i).map(x=>badge(x,x==='✏️ 後製'?'後製':x)).join('')}
-function searchable(blob){const q=state.q.trim().toLowerCase();return !q||JSON.stringify(blob).toLowerCase().includes(q)}
-function tagFilterOk(tags){if(state.filter==='all')return true;if(state.filter==='favorites')return true;return tags.map(String).some(x=>x.toLowerCase()===state.filter.toLowerCase())}
-function sceneCard(s){const on=state.fav.has(s.id);return `<article class="item-card card" data-open="scene/${s.id}"><button class="fav ${on?'on':''}" data-fav="${s.id}" aria-label="收藏">${on?'★':'☆'}</button><a href="#/scene/${s.id}"><img class="shot" src="examples/${s.id}.jpg" alt=""><div class="pad"><div class="badges">${sceneTags(s)}</div><h2>${esc(sceneTitle(s))}</h2><p class="item-description">${esc(s.description||`針對「${sceneTitle(s)}」的實用拍攝設定。`)}</p><p class="one-glance"><b>一眼睇晒</b><br>${esc(oneGlanceCapture(s)||'按入查看拍攝設定')}</p></div></a></article>`}
-function recipeCard(r){const on=state.recipeFav.has(r.id);return `<article class="item-card card" data-open="recipe/${r.id}"><button class="fav ${on?'on':''}" data-recipe-fav="${r.id}" aria-label="收藏">${on?'★':'☆'}</button>${r.image?`<img class="shot" src="${esc(r.image)}" alt="">`:''}<div class="pad"><div class="badges">${recipeTags(r)}</div><h2>${esc(r.name)}</h2><p class="item-description">${esc(r.fit||r.want||'後製調色方案，可按原片及個人喜好套用。')}</p><p class="one-glance"><b>一眼睇晒</b><br>${esc(r.line||'查看完整後製調校')}</p><a class="btn" href="#/recipe/${r.id}">查看調校</a></div></article>`}
-function modes(){return [['timelapse','⏱️','縮時','Time-lapse'],['slomo','🐢','慢動作','Slo-mo'],['cinematic','🎬','電影','Cinematic'],['video','🎥','影片','Video'],['photo','📷','照片','Photo'],['portrait','👤','人像','Portrait'],['spatial','🕶️','空間','Spatial'],['pano','🌐','全景','Pano']]}
-function modeSelector(){return `<section class="mode-panel card"><div class="section-head"><div><div class="eyebrow">拍攝模式</div><h2>選擇目前使用的模式</h2></div><span class="mode-current">${esc((modes().find(x=>x[0]===state.mode)||modes()[4])[2])}</span></div><div class="mode-grid">${modes().map(([id,icon,zh,en])=>`<button class="mode-btn ${state.mode===id?'active':''}" data-mode="${id}"><span class="mode-icon">${icon}</span><span><b>${zh}</b><small>${en}</small></span></button>`).join('')}</div>${state.mode==='portrait'?`<div class="portrait-lights"><strong>👤 人像光效 (Portrait Lighting)</strong><div class="light-grid">${['自然光 Natural','攝影室光 Studio','輪廓光 Contour','舞台光 Stage','舞台單色 Stage Mono','高調單色 High-Key Mono'].map((x,i)=>`<span>${i+1} · ${x}</span>`).join('')}</div></div>`:''}</section>`}
-function filters(){const row1=[['all','▦ 全部'],['favorites','☆ 收藏'],['capture','📷 拍攝'],['edit','✏️ 後製']];const row2=[['自然','🌿 自然'],['明亮','☀️ 明亮'],['冷色','❄️ 冷色'],['暖色','🔥 暖色'],['戲劇','🎭 戲劇'],['日系','🌸 日系'],['風景','🏞️ 風景'],['夜景','🌙 夜景'],['人物','👤 人物'],['動態','🏃 動態'],['水','💧 水'],['光線','💡 光線']];const row=(items,cls)=>`<div class="filter-row ${cls}">${items.map(([id,label])=>`<button class="chip ${state.filter===id?'active':''}" data-filter="${id}">${esc(label)}${id==='favorites'?' '+(state.fav.size+state.recipeFav.size):''}</button>`).join('')}</div>`;return `<div class="filters">${row(row1,'filter-primary')}${row(row2,'filter-secondary')}</div>`}
-function allPage(active='all'){
- const d=state.db;
- const scenes=d.scenes.scenes.filter(s=>searchable(s)&&(!['favorites'].includes(state.filter)||state.fav.has(s.id))&&state.filter!=='edit'&&tagFilterOk(['拍攝',...(SCENE_TAGS[s.id]||[])]));
- const recipes=d.recipes.recipes.filter(r=>searchable(r)&&(!['favorites'].includes(state.filter)||state.recipeFav.has(r.id))&&state.filter!=='capture'&&tagFilterOk(['後製',...(r.familyTags||[]).map(x=>EFFECT_TAGS[x]||x)]));
- const isCapture=active==='capture'||state.filter==='capture',isEdit=active==='edit'||state.filter==='edit';
- const sceneList=isEdit?[]:scenes,recipeList=isCapture?[]:recipes;
- let body='';if(!isEdit)body+=`<section class="item-section"><div class="section-head"><div><h2>📷 拍攝項目</h2></div><span class="count">${sceneList.length}</span></div><div class="item-grid">${sceneList.map(sceneCard).join('')||'<div class="empty">沒有符合的拍攝項目。</div>'}</div></section>`;if(!isCapture)body+=`<section class="item-section"><div class="section-head"><div><h2>✏️ 後製項目</h2></div><span class="count">${recipeList.length}</span></div><div class="item-grid">${recipeList.map(recipeCard).join('')||'<div class="empty">沒有符合的後製項目。</div>'}</div></section>`;
- return `<div class="search"><input id="q" type="search" placeholder="搜尋名稱、參數、設定……" value="${esc(state.q)}"></div>${filters()}${body}<p class="guide-link"><a class="btn" href="#/guide">📖 通用功能調校方式／定義</a></p>`}
-function dataMaps(){const d=state.db;return{scenes:new Map(d.scenes.scenes.map(x=>[x.id,x])),styles:new Map(d.styles.styles.map(x=>[x.id,x])),recipes:new Map(d.recipes.recipes.map(x=>[x.id,x])),workflows:new Map(d.workflows.workflows.map(x=>[x.id,x]))}}
-function sceneTitle(s){return s.title||s.name}
-function stageTag(stage){return stage==='capture'?badge('📷 拍攝'):badge('✏️ 後製')}
-function captureName(id){const x=CAPTURE_LABELS[id];return x?`${x[0]} ${x[1]} (${x[2]})`:id}
-function editName(id){const x=EDIT_LABELS[id];return x?`${x[0]} ${x[1]} (${x[2]})`:id}
-function cleanValue(id,value){if(id==='histogram')return '';if(id==='format')return String(value).replace(/HEIF Max 或 /g,'');if(id==='aspect')return String(value);return value}
-function oneGlanceCapture(s){const rows=[...(s.must||[]),...(s.options||[])].filter(r=>!['style','histogram','format','aspect'].includes(r.id));const seen=new Set();return rows.map(r=>{if(seen.has(r.id))return null;seen.add(r.id);const v=cleanValue(r.id,r.value);return v?`${captureName(r.id).split(' (')[0]} ${v}`:null}).filter(Boolean).slice(0,5).join(' · ')}
-function sceneTags(s){return ['📷 拍攝',...(SCENE_TAGS[s.id]||s.categories?.map(c=>c.name)||[])].map(x=>badge(x,x==='📷 拍攝'?'拍攝':x)).join('')}
-function recipeTags(r){const extra=r.id.startsWith('japanese-')?['日系']:[];return ['✏️ 後製',...(r.familyTags||[]).map(x=>EFFECT_TAGS[x]||x),...extra].filter((x,i,a)=>a.indexOf(x)===i).map(x=>badge(x,x==='✏️ 後製'?'後製':x)).join('')}
-function searchable(blob){const q=state.q.trim().toLowerCase();return !q||JSON.stringify(blob).toLowerCase().includes(q)}
-function tagFilterOk(tags){if(state.filter==='all')return true;if(state.filter==='favorites')return true;return tags.map(String).some(x=>x.toLowerCase()===state.filter.toLowerCase())}
-function sceneCard(s){const on=state.fav.has(s.id);return `<article class="item-card card" data-open="scene/${esc(s.id)}"><button class="fav ${on?'on':''}" data-fav="${esc(s.id)}" aria-label="收藏">${on?'★':'☆'}</button><img class="shot card-open" data-open-target="scene/${esc(s.id)}" src="examples/${esc(s.id)}.jpg" alt="${esc(sceneTitle(s))}" loading="lazy" onerror="this.style.display='none'"><div class="pad card-open" data-open-target="scene/${esc(s.id)}"><div class="badges">${sceneTags(s)}</div><h2>${esc(sceneTitle(s))}</h2><p class="item-description">${esc(s.description||`針對「${sceneTitle(s)}」的實用拍攝設定。`)}</p><p class="one-glance"><b>一眼睇晒</b><br>${esc(oneGlanceCapture(s)||'按入查看拍攝設定')}</p></div></article>`}function recipeCard(r){const on=state.recipeFav.has(r.id);return `<article class="item-card card" data-open="recipe/${esc(r.id)}"><button class="fav ${on?'on':''}" data-recipe-fav="${esc(r.id)}" aria-label="收藏">${on?'★':'☆'}</button>${r.image?`<img class="shot card-open" data-open-target="recipe/${esc(r.id)}" src="${esc(r.image)}" alt="${esc(r.name)}" loading="lazy" onerror="this.style.display='none'">`:''}<div class="pad card-open" data-open-target="recipe/${esc(r.id)}"><div class="badges">${recipeTags(r)}</div><h2>${esc(r.name)}</h2><p class="item-description">${esc(r.fit||r.want||'後製調色方案，可按原片及個人喜好套用。')}</p><p class="one-glance"><b>一眼睇晒</b><br>${esc(r.line||'查看完整後製調校')}</p></div></article>`}function modes(){return [['timelapse','⏱️','縮時','Time-lapse'],['slomo','🐢','慢動作','Slo-mo'],['cinematic','🎬','電影','Cinematic'],['video','🎥','影片','Video'],['photo','📷','照片','Photo'],['portrait','👤','人像','Portrait'],['spatial','🕶️','空間','Spatial'],['pano','🌐','全景','Pano']]}
-function modeSelector(){return `<section class="mode-panel card"><div class="section-head"><div><div class="eyebrow">拍攝模式</div><h2>選擇目前使用的模式</h2></div><span class="mode-current">${esc((modes().find(x=>x[0]===state.mode)||modes()[4])[2])}</span></div><div class="mode-grid">${modes().map(([id,icon,zh,en])=>`<button class="mode-btn ${state.mode===id?'active':''}" data-mode="${id}"><span class="mode-icon">${icon}</span><span><b>${zh}</b><small>${en}</small></span></button>`).join('')}</div>${state.mode==='portrait'?`<div class="portrait-lights"><strong>👤 人像光效 (Portrait Lighting)</strong><div class="light-grid">${['自然光 Natural','攝影室光 Studio','輪廓光 Contour','舞台光 Stage','舞台單色 Stage Mono','高調單色 High-Key Mono'].map((x,i)=>`<span>${i+1} · ${x}</span>`).join('')}</div></div>`:''}</section>`}
-function filters(tags){const primary=[['all','▦ 全部'],['favorites','☆ 收藏'],['capture','📷 拍攝'],['edit','✏️ 後製']];const secondary=tags.filter(([id])=>!['all','favorites','capture','edit'].includes(id));const row=(items,cls)=>`<div class="filter-row ${cls}">${items.map(([id,label])=>`<button class="chip ${state.filter===id?'active':''}" data-filter="${id}">${esc(label)}${id==='favorites'?' '+(state.fav.size+state.recipeFav.size):''}</button>`).join('')}</div>`;return `<div class="filters">${row(primary,'filter-primary')}${row(secondary,'filter-secondary')}</div>`}
-function topTabs(active){return ``}
-function allPage(active='all'){const d=state.db;const scenes=d.scenes.scenes.filter(s=>searchable(s)&&(!['favorites'].includes(state.filter)||state.fav.has(s.id))&&state.filter!=='edit'&&tagFilterOk(['拍攝',...(SCENE_TAGS[s.id]||[])]));const recipes=d.recipes.recipes.filter(r=>searchable(r)&&(!['favorites'].includes(state.filter)||state.recipeFav.has(r.id))&&state.filter!=='capture'&&tagFilterOk(['後製',...(r.familyTags||[]).map(x=>EFFECT_TAGS[x]||x)]));const isCapture=active==='capture'||state.filter==='capture',isEdit=active==='edit'||state.filter==='edit';const sceneList=isEdit?[]:scenes,recipeList=isCapture?[]:recipes;let body='';if(!isEdit)body+=`<section class="item-section"><div class="section-head"><div><h2>📷 拍攝項目</h2></div><span class="count">${sceneList.length}</span></div><div class="item-grid">${sceneList.map(sceneCard).join('')||'<div class="empty">沒有符合的拍攝項目。</div>'}</div></section>`;if(!isCapture)body+=`<section class="item-section"><div class="section-head"><div><h2>✏️ 後製項目</h2></div><span class="count">${recipeList.length}</span></div><div class="item-grid">${recipeList.map(recipeCard).join('')||'<div class="empty">沒有符合的後製項目。</div>'}</div></section>`;return `<div class="search"><input id="q" type="search" placeholder="搜尋名稱、參數、設定……" value="${esc(state.q)}"></div>${filters([['拍攝','📷 拍攝'],['後製','✏️ 後製'],['自然','🌿 自然'],['明亮','☀️ 明亮'],['冷色','❄️ 冷色'],['暖色','🔥 暖色'],['戲劇','🎭 戲劇'],['日系','🌸 日系'],['風景','🏞️ 風景'],['夜景','🌙 夜景'],['人物','👤 人物'],['動態','🏃 動態'],['水','💧 水'],['光線','💡 光線']])}${body}<p class="guide-link"><a class="btn" href="#/guide">📖 通用功能調校方式／定義</a></p>`}function relevantCaptureRows(rows){return (rows||[]).filter(r=>!['style','histogram','format','aspect'].includes(r.id))}
-function captureRows(rows,params){const clean=relevantCaptureRows(rows);if(!clean.length)return '<p class="muted">沒有需要額外設定的項目。</p>';return `<div class="table-scroll"><table class="settings-table"><thead><tr><th>參數</th><th>設定</th><th>原因</th></tr></thead><tbody>${clean.map(r=>{const p=params.get(r.id);return `<tr><td>${captureName(r.id)}</td><td><strong>${esc(r.value)}</strong></td><td>${esc(r.why||'')}</td></tr>`}).join('')}</tbody></table></div>`}
-function editRows(adj){return `<div class="table-scroll"><table class="settings-table"><thead><tr><th>參數</th><th>調校</th></tr></thead><tbody>${Object.entries(adj).map(([k,v])=>`<tr><td>${editName(k)}</td><td><strong>${esc(v)}</strong></td></tr>`).join('')}</tbody></table></div>`}
-function scenePage(id){const d=state.db,m=dataMaps(),s=m.scenes.get(id);if(!s)return `<div class="empty">找不到場景。</div>`;const params=new Map(d.parameters.parameters.map(x=>[x.id,x]));const on=state.fav.has(id);return `<a class="back" href="#/capture">← 拍攝</a><header class="detail-head"><div><div class="badges">${sceneTags(s)}</div><h1>${esc(sceneTitle(s))}</h1><p class="lead">${esc(s.description||`適用於${sceneTitle(s)}的現場拍攝。`)}</p></div><div class="actions"><button class="btn" data-fav="${id}">${on?'★ 已收藏':'☆ 收藏'}</button></div></header>${modeSelector()}<img class="shot hero-shot" src="examples/${id}.jpg" alt="${esc(sceneTitle(s))}"><section class="info-strip"><div><b>簡單說明</b><span>${esc(s.description||'針對此場景的實用拍攝設定。')}</span></div><div><b>適合場景</b><span>${esc(s.fit||'按主體、光線及構圖需要選擇。')}</span></div><div><b>避免事項</b><span>${esc(s.avoid||'避免過度調校及不必要的後期補救。')}</span></div></section><section class="detail-section"><div class="section-head"><div><h2>📷 必須</h2><p class="muted">先完成以下 ${relevantCaptureRows(s.must).length} 項</p></div></div>${captureRows(s.must||[],params)}</section><section class="detail-section"><div class="section-head"><div><h2>⚙️ 選項</h2><p class="muted">有需要時再加入以下設定</p></div></div>${captureRows(s.options||[],params)}</section><section class="detail-section"><h2>操作次序</h2><ol class="flow-list">${(s.flow||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ol></section><section class="detail-section"><h2>注意事項</h2><ul class="notes">${(s.notes||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></section>`}
-function recipePage(id){const r=dataMaps().recipes.get(id);if(!r)return `<div class="empty">找不到後製項目。</div>`;const style='Photos Style';return `<a class="back" href="#/edit">← 後製</a><header class="detail-head"><div><div class="badges">${recipeTags(r)}</div><h1>${esc(r.name)}</h1><p class="lead">${esc(r.line||r.want||'後製調校方案')}</p></div><div class="actions"><button class="btn" data-recipe-fav="${id}">${state.recipeFav.has(id)?'★ 已收藏':'☆ 收藏'}</button></div></header>${r.image?`<img class="shot hero-shot" src="${esc(r.image)}" alt="">`:''}<section class="info-strip"><div><b>簡介</b><span>${esc(r.want||r.line||'')}</span></div><div><b>適合場景</b><span>${esc(r.fit||'按原片光線及主體選擇。')}</span></div><div><b>避免事項</b><span>${esc(r.avoid||'避免過度調校。')}</span></div></section><section class="detail-section"><h2>🎨 Style（Photos）</h2><p class="muted">Photos 後製的 Style 與相機的 Photographic Style 是兩套不同控制；後製只保留 <b>0–100</b> 的風格強度，不再調校 Tone、Color、Palette、Texture。</p><div class="style-intensity"><span>🎨 風格強度（Style）</span><strong>0–100</strong></div><input class="style-range" type="range" min="0" max="100" value="50" aria-label="Photos Style 風格強度"><div class="range-labels"><span>0</span><span>50</span><span>100</span></div></section><section class="detail-section"><h2>✏️ Edit 調校</h2>${editRows(r.adjustments||{})}</section><section class="detail-section"><h2>其他</h2>${r.extras?`<div class="control-list">${Object.entries(r.extras).map(([k,v])=>`<div><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join('')}</div>`:'<p class="muted">沒有額外設定。</p>'}</section>`}
-function guidePage(){const d=state.db;const params=d.parameters.parameters;const hist=`<section class="guide-card card pad"><h2>📊 長條圖 (Histogram)</h2><p>用於判斷曝光分布，不是「長開＝設定開」的場景參數。</p><div class="hist-guide"><div><b>貼近左邊</b><span>暗部較多；留意陰影死黑。</span></div><div><b>集中中間</b><span>整體曝光較均衡。</span></div><div><b>貼近右邊</b><span>亮部較多；留意高光爆光。</span></div></div></section>`;const format=`<section class="guide-card card pad"><h2>💾 格式 (Format) ＋ ▣ 畫面比例 (Aspect Ratio)</h2><p><b>4:3</b>：一般拍攝建議，保留較完整原生畫面。<b>48MP</b>：光線充足及需要裁切時使用。<b>ProRAW</b>：需要較大幅後期時使用。</p></section>`;return `<section class="hero compact-hero"><div class="eyebrow">General Guide</div><h1>通用功能調校方式／定義</h1><p>不屬於任何單一場景的設定集中於此。場景頁只顯示該場景真正有分別的必須及選項。</p></section>${hist}${format}<section class="guide-card card pad"><h2>📷 Camera 調校參數</h2><div class="guide-grid">${params.map(p=>`<article><h3>${captureName(p.id)}</h3><p>${esc(p.note||'拍攝時的相應控制。')}</p></article>`).join('')}</div></section><section class="guide-card card pad"><h2>✏️ Photos Edit 調校</h2><div class="guide-grid">${Object.entries(EDIT_LABELS).map(([id,x])=>`<article><h3>${x[0]} ${x[1]} (${x[2]})</h3><p>Photos 後製滑桿，數值按需要微調；與 Camera 拍攝時的同名控制分開。</p></article>`).join('')}</div></section>`}
-function render(){if(!state.db)return;const r=route();document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('active',a.dataset.nav===r.name));if(r.name==='scene')app.innerHTML=scenePage(r.id);else if(r.name==='recipe')app.innerHTML=recipePage(r.id);else if(r.name==='guide')app.innerHTML=guidePage();else app.innerHTML=allPage(r.name);$('#q')?.addEventListener('input',e=>{state.q=e.target.value;render()});}
-window.addEventListener('hashchange',render);document.addEventListener('click',e=>{const tag=e.target.closest('[data-tag-filter]');if(tag){e.preventDefault();e.stopPropagation();state.filter=tag.dataset.tagFilter;render();return}const f=e.target.closest('[data-fav]');if(f){e.preventDefault();e.stopPropagation();toggle(state.fav,f.dataset.fav);return}const rf=e.target.closest('[data-recipe-fav]');if(rf){e.preventDefault();e.stopPropagation();toggle(state.recipeFav,rf.dataset.recipeFav);return}const nav=e.target.closest('[data-nav]');if(nav){e.preventDefault();state.filter=nav.dataset.nav==='capture'?'capture':nav.dataset.nav==='edit'?'edit':'all';state.q='';location.hash='#/'+nav.dataset.nav;return}const open=e.target.closest('[data-open]');if(open){e.preventDefault();e.stopPropagation();location.hash='#/'+open.dataset.open;return}const mode=e.target.closest('[data-mode]');if(mode){e.preventDefault();setMode(mode.dataset.mode);return}const fl=e.target.closest('[data-filter]');if(fl){e.preventDefault();state.filter=fl.dataset.filter;render();return}const th=e.target.closest('[data-theme]');if(th){e.preventDefault();setTheme(th.dataset.theme);return}});async function boot(){try{const files=['categories','hardware','parameters','scenes','styles','recipes','adjustments','japanese-adjustment-presets','workflows','recipe-migration-map'];const entries=await Promise.all(files.map(async n=>[n,await fetch(`data/${n}.json`).then(r=>r.json())]));state.db=Object.fromEntries(entries);setTheme(localStorage.getItem(THEME_KEY)||'light');render()}catch(err){app.innerHTML=`<div class="error"><h1>資料載入失敗</h1><p>${esc(err.message)}</p></div>`}}
+const THEME_KEY = "iphone18proTheme.v5";
+const FAV_KEY = "iphone18proFavorites.v5";
+const app = document.querySelector("#app");
+const state = {
+  scenes: [],
+  recipes: [],
+  q: "",
+  mode: "photo",
+  modeFor: "",
+  fav: new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]")),
+};
+
+const SKIP = new Set(["style", "histogram", "format", "aspect", "texture", "grain", "tone"]);
+
+const CAP = {
+  aperture: ["◎", "鏡頭光圈", "Aperture"],
+  depth: ["🌀", "景深", "Depth"],
+  shutter: ["⏱️", "快門速度", "Shutter"],
+  night: ["🌙", "夜間模式", "Night Mode"],
+  ev: ["☀️", "曝光", "Exposure"],
+  focus: ["🎯", "對焦", "Focus"],
+  wb: ["🌡️", "白平衡", "White Balance"],
+  zoom: ["🔍", "變焦", "Zoom"],
+  mp: ["📐", "解析度", "Resolution"],
+  format: ["🗂️", "格式", "Format"],
+  style: ["🎨", "風格", "Style"],
+  texture: ["✨", "質感", "Texture"],
+  grain: ["🌫️", "顆粒", "Grain"],
+  tone: ["◐", "色調", "Tone"],
+  histogram: ["📊", "長條圖", "Histogram"],
+  live: ["📸", "原況照片", "Live Photo"],
+  burst: ["⚡", "連拍", "Burst"],
+  timer: ["⏳", "計時器", "Timer"],
+  grid: ["▦", "格線", "Grid"],
+  "portrait-mode": ["👤", "人像模式", "Portrait"],
+  macro: ["🔬", "微距", "Macro"],
+  tripod: ["📍", "腳架", "Tripod"],
+  flash: ["💡", "閃光燈", "Flash"],
+  aspect: ["▭", "比例", "Aspect"],
+};
+
+const EDIT = {
+  exposure: ["☀️", "曝光", "Exposure"],
+  brilliance: ["✨", "鮮明度", "Brilliance"],
+  highlights: ["🔆", "亮部", "Highlights"],
+  shadows: ["🌘", "陰影", "Shadows"],
+  contrast: ["◐", "對比", "Contrast"],
+  brightness: ["💡", "亮度", "Brightness"],
+  "black-point": ["⚫", "黑點", "Black Point"],
+  saturation: ["🎨", "飽和度", "Saturation"],
+  vibrance: ["🌈", "自然飽和度", "Vibrance"],
+  warmth: ["🌡️", "色溫", "Warmth"],
+  tint: ["🟣", "色調", "Tint"],
+  sharpness: ["🔪", "銳利度", "Sharpness"],
+  definition: ["🔎", "清晰度", "Definition"],
+  "noise-reduction": ["🧹", "雜訊降低", "Noise Reduction"],
+  vignette: ["◉", "暈影", "Vignette"],
+  "white-balance": ["🌡️", "白平衡", "White Balance"],
+  "live-photo": ["📸", "原況照片", "Live Photo"],
+  style: ["🎨", "風格", "Style"],
+};
+
+const TAGS = {
+  sunrise: ["暖色", "光線", "風景"],
+  "blue-sky": ["明亮", "風景"],
+  overcast: ["冷色", "風景"],
+  sunset: ["暖色", "光線"],
+  "milky-way": ["夜景"],
+  moon: ["夜景"],
+  "city-night": ["夜景", "暖色"],
+  "car-trails": ["夜景", "動態"],
+  "silky-water": ["水", "風景"],
+  "water-splash": ["水", "動態"],
+  starburst: ["夜景"],
+  backlight: ["光線"],
+  dark: ["夜景"],
+  portrait: ["人物"],
+  "env-portrait": ["人物", "風景"],
+  "tilt-shift": ["風景"],
+  "japanese-fresh": ["日系", "明亮"],
+  mountain: ["風景"],
+  seascape: ["風景", "水", "暖色"],
+  fog: ["冷色", "風景"],
+  architecture: ["風景"],
+  street: ["動態"],
+  sports: ["動態"],
+  food: ["食物", "暖色"],
+  macro: ["微距"],
+  "video-24p": ["影片"],
+};
+
+const EFFECT = { natural: "自然", bright: "明亮", cool: "冷色", warm: "暖色", drama: "戲劇", japanese: "日系" };
+const ROW3 = ["自然", "明亮", "冷色", "暖色", "戲劇", "日系", "風景", "夜景", "人物", "動態", "水", "光線", "食物", "微距", "影片"];
+const MODES = [
+  ["timelapse", "⏱️", "縮時", "Time-lapse"],
+  ["slomo", "🐢", "慢動作", "Slo-mo"],
+  ["cinematic", "🎬", "電影", "Cinematic"],
+  ["video", "🎥", "影片", "Video"],
+  ["photo", "📷", "照片", "Photo"],
+  ["portrait", "👤", "人像", "Portrait"],
+  ["spatial", "🕶️", "空間", "Spatial"],
+  ["pano", "🌐", "全景", "Pano"],
+];
+const LIGHTS = ["自然光", "攝影棚燈光", "輪廓光", "舞台燈光", "舞台燈光單色", "高調燈光單色"];
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (m) => ({
+  "&": "\u0026amp;", "<": "\u0026lt;", ">": "\u0026gt;", '"': "\u0026quot;", "'": "\u0026#39;",
+}[m]));
+
+function label(map, id) {
+  const x = map[id];
+  return x ? `${x[0]} ${x[1]}（${x[2]}）` : id;
+}
+
+function route() {
+  const path = (location.hash.replace(/^#/, "") || "/all").split("?")[0];
+  const p = path.split("/").filter(Boolean).map(decodeURIComponent);
+  const name = p[0] || "all";
+  if (name === "scene") return { page: "scene", id: p[1] || "" };
+  if (name === "recipe") return { page: "recipe", id: p[1] || "" };
+  if (name === "guide") return { page: "guide", filter: "all" };
+  if (name === "capture") return { page: "list", filter: "capture" };
+  if (name === "edit") return { page: "list", filter: "edit" };
+  if (name === "favorites") return { page: "list", filter: "favorites" };
+  if (name === "tag") return { page: "list", filter: p[1] || "all" };
+  return { page: "list", filter: "all" };
+}
+
+function saveFav() { localStorage.setItem(FAV_KEY, JSON.stringify([...state.fav])); }
+function favId(kind, id) { return kind + ":" + id; }
+function toggleFav(key) {
+  state.fav.has(key) ? state.fav.delete(key) : state.fav.add(key);
+  saveFav();
+  render();
+}
+function setTheme(name) {
+  document.documentElement.dataset.theme = name;
+  localStorage.setItem(THEME_KEY, name);
+  document.querySelectorAll("[data-theme-btn]").forEach((b) => b.classList.toggle("active", b.dataset.themeBtn === name));
+  const color = { light: "#f3f1ec", dark: "#121110", outdoor: "#ffffff" }[name] || "#f3f1ec";
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", color);
+}
+
+function sceneTags(s) { return ["拍攝", ...(TAGS[s.id] || [])]; }
+function recipeTags(r) {
+  const extra = (r.familyTags || []).map((t) => EFFECT[t] || t);
+  return ["後製", ...extra.filter((t, i, a) => a.indexOf(t) === i)];
+}
+function rowsOf(s) {
+  return [...(s.must || []), ...(s.options || [])].filter((r) => r && !SKIP.has(r.id));
+}
+function glanceScene(s) {
+  return rowsOf(s).slice(0, 4).map((r) => `${CAP[r.id]?.[1] || r.id} ${r.value}`).join(" · ") || "打開查看拍攝設定";
+}
+function styleValue(r) {
+  const n = r.photographicStyle && r.photographicStyle.cinematic;
+  return n === 0 || n ? String(n) : "";
+}
+function editPairs(r) {
+  return Object.entries(r.adjustments || {}).filter(([, v]) => v !== 0 && v !== "0" && v != null && v !== "");
+}
+function glanceRecipe(r) {
+  const bits = [];
+  const sv = styleValue(r);
+  if (sv) bits.push(`風格 ${sv}`);
+  editPairs(r).slice(0, 3).forEach(([k, v]) => bits.push(`${EDIT[k]?.[1] || k} ${v}`));
+  return bits.join(" · ") || r.line || r.want || "打開查看後製設定";
+}
+function hit(text) {
+  const q = state.q.trim().toLowerCase();
+  return !q || text.toLowerCase().includes(q);
+}
+
+function card(kind, id, title, img, tags, glance) {
+  const key = favId(kind, id);
+  const on = state.fav.has(key);
+  const href = kind === "scene" ? `#/scene/${encodeURIComponent(id)}` : `#/recipe/${encodeURIComponent(id)}`;
+  const badges = tags.map((t) => {
+    const dest = t === "拍攝" ? "#/capture" : t === "後製" ? "#/edit" : `#/tag/${encodeURIComponent(t)}`;
+    return `<a class="tag ${t === "拍攝" || t === "後製" ? "stage" : ""}" href="${dest}">${esc(t)}</a>`;
+  }).join("");
+  return `<article class="item">
+    <button type="button" class="fav ${on ? "on" : ""}" data-fav="${esc(key)}" aria-label="收藏">${on ? "★" : "☆"}</button>
+    <a href="${href}"><img class="shot" src="${esc(img)}" alt="${esc(title)}"></a>
+    <div class="pad">
+      <div class="badges">${badges}</div>
+      <a class="text-link" href="${href}"><h2>${esc(title)}</h2><p class="glance"><b>一眼睇晒</b><br>${esc(glance)}</p></a>
+    </div>
+  </article>`;
+}
+
+function listPage(filter) {
+  const scenes = state.scenes.filter((s) => {
+    if (filter === "edit") return false;
+    if (filter === "favorites" && !state.fav.has(favId("scene", s.id))) return false;
+    if (filter !== "all" && filter !== "capture" && filter !== "favorites" && !sceneTags(s).includes(filter)) return false;
+    return hit([s.title, s.description, s.fit, glanceScene(s), sceneTags(s).join(" ")].join(" "));
+  });
+  const recipes = state.recipes.filter((r) => {
+    if (filter === "capture") return false;
+    if (filter === "favorites" && !state.fav.has(favId("recipe", r.id))) return false;
+    if (filter !== "all" && filter !== "edit" && filter !== "favorites" && !recipeTags(r).includes(filter)) return false;
+    return hit([r.name, r.want, r.line, r.fit, glanceRecipe(r), recipeTags(r).join(" ")].join(" "));
+  });
+  const cards = [
+    ...scenes.map((s) => card("scene", s.id, s.title || s.name, `examples/${s.id}.jpg`, sceneTags(s), glanceScene(s))),
+    ...recipes.map((r) => card("recipe", r.id, r.name, r.image || "", recipeTags(r), glanceRecipe(r))),
+  ];
+  const chip = (href, id, text) => `<a class="chip ${filter === id ? "active" : ""}" href="${href}">${text}</a>`;
+  return `<div class="search"><input id="q" type="search" placeholder="搜尋名稱、參數、設定" value="${esc(state.q)}" enterkeyhint="search"></div>
+    <div class="filters">
+      <div class="filter-row two">${chip("#/all", "all", "▦ 全部")}${chip("#/favorites", "favorites", "☆ 收藏 " + state.fav.size)}</div>
+      <div class="filter-row two">${chip("#/capture", "capture", "📷 拍攝")}${chip("#/edit", "edit", "✏️ 後製")}</div>
+      <div class="filter-row scroll">${ROW3.map((t) => chip(`#/tag/${encodeURIComponent(t)}`, t, t)).join("")}</div>
+    </div>
+    ${cards.length ? `<div class="grid">${cards.join("")}</div>` : `<div class="empty">沒有符合的項目。</div>`}
+    <p class="guide-link"><a href="#/guide">通用功能說明</a></p>`;
+}
+
+function table(rows, withWhy, map) {
+  if (!rows.length) return "";
+  const head = withWhy ? "<th>參數</th><th>設定</th><th>原因</th>" : "<th>參數</th><th>設定</th>";
+  const body = rows.map((r) => withWhy
+    ? `<tr><td>${label(map, r.id)}</td><td><strong>${esc(r.value)}</strong></td><td>${esc(r.why || "")}</td></tr>`
+    : `<tr><td>${label(map, r.id)}</td><td><strong>${esc(r.value)}</strong></td></tr>`).join("");
+  return `<div class="table-scroll"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+
+function section(title, hint, rows, withWhy, map) {
+  if (!rows.length) return "";
+  return `<section class="block"><h2>${title}</h2><p class="sub">${hint.replace("N", String(rows.length))}</p>${table(rows, withWhy, map)}</section>`;
+}
+
+function modeBar(id) {
+  if (state.modeFor !== id) {
+    state.modeFor = id;
+    state.mode = id === "video-24p" ? "video" : id === "portrait" || id === "env-portrait" ? "portrait" : "photo";
+  }
+  const buttons = MODES.map(([mid, icon, zh, en]) =>
+    `<button type="button" class="mode-btn ${state.mode === mid ? "active" : ""}" data-mode="${mid}"><span>${icon} ${zh}</span><small>${en}</small></button>`).join("");
+  const lights = state.mode === "portrait"
+    ? `<div class="lights">${LIGHTS.map((n, i) => `<span>${i + 1} ${esc(n)}</span>`).join("")}</div>`
+    : "";
+  return `<section class="modes"><h2>拍攝模式（Capture Mode）</h2><div class="mode-grid">${buttons}</div>${lights}</section>`;
+}
+
+function scenePage(id) {
+  const s = state.scenes.find((x) => x.id === id);
+  if (!s) return `<div class="empty">找不到這個項目。<p><a href="#/all">返回</a></p></div>`;
+  const must = (s.must || []).filter((r) => !SKIP.has(r.id));
+  const options = (s.options || []).filter((r) => !SKIP.has(r.id));
+  const notes = (s.notes || []).map((n) => `<li>${esc(typeof n === "string" ? n : n.text || "")}</li>`).join("");
+  const flow = (s.flow || []).filter((n) => typeof n === "string" && !n.includes("長條圖")).map((n) => `<li>${esc(n)}</li>`).join("");
+  return `<a class="back" href="#/capture">← 返回</a>
+    <header class="detail-head"><div class="badges">${sceneTags(s).map((t) => `<a class="tag" href="${t === "拍攝" ? "#/capture" : `#/tag/${encodeURIComponent(t)}`}">${esc(t)}</a>`).join("")}</div>
+    <h1>${esc(s.title || s.name)}</h1></header>
+    <img class="hero-shot" src="examples/${esc(s.id)}.jpg" alt="">
+    <section class="info">
+      <div><b>說明</b><p>${esc(s.description || "")}</p></div>
+      <div><b>適合場景</b><p>${esc(s.fit || "")}</p></div>
+      <div><b>避免事項</b><p>${esc(s.avoid || "")}</p></div>
+    </section>
+    ${modeBar(s.id)}
+    ${section("必須", "先完成以下 N 項", must, true, CAP)}
+    ${section("選項", "有需要再加入以下 N 項", options, true, CAP)}
+    ${flow ? `<section class="block"><h2>操作次序</h2><ol class="flow">${flow}</ol></section>` : ""}
+    ${notes ? `<section class="block"><h2>注意</h2><ul class="notes">${notes}</ul></section>` : ""}`;
+}
+
+function recipePage(id) {
+  const r = state.recipes.find((x) => x.id === id);
+  if (!r) return `<div class="empty">找不到這個項目。<p><a href="#/all">返回</a></p></div>`;
+  const sv = styleValue(r);
+  const must = [];
+  if (sv) must.push({ id: "style", value: sv, why: "" });
+  editPairs(r).forEach(([k, v]) => must.push({ id: k, value: v }));
+  const options = sv ? [] : [{ id: "style", value: "0–100，無指定強度" }];
+  return `<a class="back" href="#/edit">← 返回</a>
+    <header class="detail-head"><div class="badges">${recipeTags(r).map((t) => `<a class="tag" href="${t === "後製" ? "#/edit" : `#/tag/${encodeURIComponent(t)}`}">${esc(t)}</a>`).join("")}</div>
+    <h1>${esc(r.name)}</h1></header>
+    ${r.image ? `<img class="hero-shot" src="${esc(r.image)}" alt="">` : ""}
+    <section class="info">
+      <div><b>說明</b><p>${esc(r.want || r.line || "")}</p></div>
+      <div><b>適合場景</b><p>${esc(r.fit || "")}</p></div>
+      <div><b>避免事項</b><p>${esc(r.avoid || "")}</p></div>
+    </section>
+    <p class="note">Photos 的風格（Style）只調 0–100，不能再調 Tone、Color、Palette、Texture。這和相機的 Photographic Styles 是兩套控制。場景頁不指定風格。</p>
+    ${section("必須", "先完成以下 N 項", must, false, EDIT)}
+    ${section("選項", "有需要再加入以下 N 項", options, false, EDIT)}`;
+}
+
+function guidePage() {
+  const hist = [["貼近左邊", "暗部多。留意陰影死黑。"], ["中間", "整體較均衡。"], ["貼近右邊", "亮部多。留意高光過曝。"]];
+  return `<a class="back" href="#/all">← 返回</a>
+    <header class="detail-head"><h1>通用功能說明</h1><p class="lead">長條圖、格式、比例每個場景都一樣，所以不放進個別項目。</p></header>
+    <section class="guide-card"><h2>📊 長條圖（Histogram）</h2><p>用來判斷明暗分布，不是「開或關」。平常可以開著。</p>
+      <div class="hist">${hist.map(([a, b]) => `<div><b>${a}</b><span>${b}</span></div>`).join("")}</div></section>
+    <section class="guide-card"><h2>🗂️ 格式（Format） · ▭ 比例（Aspect）</h2>
+      <p>比例預設 4:3。16:9 和 1:1 只在構圖需要時用。</p>
+      <p>日常用高效率 HEIF。光線夠、要裁切才用 48MP。需要大幅後期才用 ProRAW。最相容才選 JPG。</p></section>
+    <section class="guide-card"><h2>📷 拍攝時才有</h2><p>鏡頭光圈、快門速度、夜間模式、對焦、景深、閃光燈、原況照片、連拍、計時器、腳架。這些不會出現在後製項目。</p></section>
+    <section class="guide-card"><h2>✏️ 相簿 Edit 才有</h2><p>曝光、鮮明度、亮部、陰影、對比、亮度、黑點、飽和度、自然飽和度、色溫、色調、銳利度、清晰度、雜訊降低、暈影。風格只留 0–100。</p></section>`;
+}
+
+let lastPage = "";
+function render() {
+  const r = route();
+  const pageKey = r.page + ":" + (r.id || r.filter || "");
+  const jump = pageKey !== lastPage;
+  lastPage = pageKey;
+  document.querySelectorAll("[data-nav]").forEach((a) => {
+    const on = r.filter === "capture" ? a.dataset.nav === "capture" : r.filter === "edit" ? a.dataset.nav === "edit" : a.dataset.nav === "all";
+    a.classList.toggle("active", on);
+  });
+  const searching = document.activeElement && document.activeElement.id === "q";
+  const pos = searching ? document.activeElement.selectionStart : 0;
+  if (r.page === "scene") app.innerHTML = scenePage(r.id);
+  else if (r.page === "recipe") app.innerHTML = recipePage(r.id);
+  else if (r.page === "guide") app.innerHTML = guidePage();
+  else app.innerHTML = listPage(r.filter);
+  if (searching) {
+    const q = document.querySelector("#q");
+    if (q) { q.focus(); q.setSelectionRange(pos, pos); }
+  } else if (jump) window.scrollTo(0, 0);
+}
+
+document.addEventListener("click", (e) => {
+  const fav = e.target.closest("[data-fav]");
+  if (fav) { e.preventDefault(); e.stopPropagation(); toggleFav(fav.dataset.fav); return; }
+  const mode = e.target.closest("[data-mode]");
+  if (mode) { e.preventDefault(); state.mode = mode.dataset.mode; render(); return; }
+  const theme = e.target.closest("[data-theme-btn]");
+  if (theme) { e.preventDefault(); setTheme(theme.dataset.themeBtn); }
+});
+document.addEventListener("input", (e) => {
+  if (e.target.id === "q") { state.q = e.target.value; render(); }
+});
+window.addEventListener("hashchange", render);
+
+async function boot() {
+  if ("serviceWorker" in navigator) navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()));
+  setTheme(localStorage.getItem(THEME_KEY) || "light");
+  if (!location.hash) location.hash = "#/all";
+  try {
+    const [scenes, recipes] = await Promise.all([
+      fetch("data/scenes.json").then((r) => { if (!r.ok) throw new Error("scenes.json"); return r.json(); }),
+      fetch("data/recipes.json").then((r) => { if (!r.ok) throw new Error("recipes.json"); return r.json(); }),
+    ]);
+    state.scenes = scenes.scenes || [];
+    state.recipes = recipes.recipes || [];
+    render();
+  } catch (err) {
+    app.innerHTML = `<div class="error">資料載入失敗：${esc(err.message)}</div>`;
+  }
+}
 boot();

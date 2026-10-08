@@ -1,12 +1,19 @@
-# iPhone 18 Pro 攝影大師 — Unified Camera / Photos Edit
+# iPhone 18 Pro 攝影參數指南 v2
 
-This build merges the Photographer-V2 and Photo-Adjustment data into one GitHub Pages app.
+解壓後，呢啲檔案要同 `examples` 資料夾一齊放喺 GitHub repository **根目錄**。
+冇 `index.html` 同 `app.js`，網站開唔到。
 
-## Main views
-1. **拍攝** — scene-based Camera guidance.
-2. **後製** — Photos Edit recipes.
-3. **全部** — all capture and edit items in one level, browsable by tags.
+```
+index.html
+app.js
+style.css
+guide.json
+favicon.svg
+manifest.webmanifest
+sw.js
+examples/          ← 26 張 jpg，唔好漏
+```
 
-The app deliberately does not expose a top-level Style or Hardware section. Camera Photographic Style and Photos edit Style are treated as different controls: Camera Style is a capture-stage system; Photos edit Style is a separate 0–100 intensity control without Tone / Color / Palette / Texture sub-controls.
+取代舊版 `index.html`、`app.js`、`style.css`。可以刪走舊嘅 `scenes.json`。
 
-Scene pages contain only scene-specific capture guidance. General functions such as Histogram and Format / Aspect are documented in `#/guide`.
+GitHub → Settings → Pages → Deploy from branch → `main` / root。
