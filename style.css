@@ -231,3 +231,23 @@ footer { text-align: center; padding: 8px 16px 40px; color: var(--muted); font-s
   .scene-shortcut small { font-size:10px; }
 }
 .filters .chip { flex:0 0 auto; }
+
+/* Batch 13 · unified three-level UX refinement */
+body,button,input,select,textarea{font-family:inherit}
+.brand,.brand span{font-family:inherit}
+.top nav a.guide-nav{font-size:12px}
+.top-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 18px;position:sticky;top:0;z-index:25;padding:8px 0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px)}
+.top-tabs a{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid var(--line);border-radius:13px;background:var(--card);color:var(--fg);text-decoration:none;font-weight:700;text-align:center}
+.top-tabs a.active{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.compact-hero{padding:26px 24px;margin-bottom:18px}.compact-hero h1{margin-bottom:8px}
+.item-section{margin:30px 0 42px}.item-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.item-card{position:relative;overflow:hidden}.item-card>a{display:block;color:inherit;text-decoration:none}.item-card .shot{width:100%;aspect-ratio:16/9;object-fit:cover}.item-card .pad{padding:15px}.item-card h2{font-size:18px;margin:9px 0 8px}.item-description{font-size:13px;color:var(--muted);line-height:1.55;min-height:42px}.one-glance{margin:12px 0 0;padding:10px 11px;border-radius:11px;background:var(--chip);font-size:12px;line-height:1.55}.one-glance b{font-size:11px;color:var(--muted)}.badges{display:flex;flex-wrap:wrap;gap:5px}.badge{display:inline-flex;align-items:center;justify-content:center;text-align:center;padding:4px 7px;border-radius:999px;background:var(--chip);font-size:10px;line-height:1.3}.count{min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--chip);font-weight:700}.info-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}.info-strip>div{display:flex;flex-direction:column;gap:5px;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.info-strip b{font-size:11px;color:var(--muted)}.info-strip span{font-size:13px;line-height:1.5}.settings-table th,.settings-table td{text-align:left;vertical-align:top}.settings-table td:first-child{min-width:175px;font-weight:600}.settings-table td:nth-child(2){min-width:130px}.settings-table td:nth-child(3){min-width:260px;color:var(--muted)}.style-intensity{display:flex;justify-content:space-between;align-items:center;margin:14px 0 7px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--chip)}.style-range{width:100%;accent-color:var(--accent)}.range-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.guide-card{margin:16px 0}.guide-card h2{margin-top:0}.hist-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.hist-guide>div{padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--chip)}.hist-guide b{display:block;margin-bottom:5px}.hist-guide span{font-size:12px;color:var(--muted);line-height:1.5}.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.guide-grid article{padding:13px;border:1px solid var(--line);border-radius:13px;background:var(--chip)}.guide-grid h3{font-size:14px;margin:0 0 6px}.guide-grid p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}.guide-link{text-align:center;margin:30px 0}.guide-link .btn{display:inline-flex;align-items:center;justify-content:center}.mobile-nav a{justify-content:center;align-items:center;text-align:center;line-height:1.2}.mobile-nav small{line-height:1.2}.mobile-nav{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.item-grid{grid-template-columns:repeat(2,1fr)}.guide-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.top-tabs{top:0}.item-grid{grid-template-columns:1fr}.info-strip,.hist-guide,.guide-grid{grid-template-columns:1fr}.compact-hero{padding:22px 17px}.settings-table{min-width:700px}.settings-table td:first-child{min-width:170px}.item-card h2{font-size:17px}.top-inner{align-items:center}.top nav .guide-nav{display:none}}
+/* Batch 14 refinement: scene information and consistent centered controls */
+.info-strip{grid-template-columns:repeat(3,1fr)}
+.info-strip>div{min-width:0}
+.info-strip span{overflow-wrap:anywhere}
+.mode-btn,.chip,.top-tabs a,.mobile-nav a,.btn{justify-content:center;text-align:center}
+.settings-table td:first-child{line-height:1.45}
+.detail-head h1{font-weight:700;letter-spacing:0}
+@media(max-width:760px){.info-strip{grid-template-columns:1fr}.info-strip>div{min-height:0}}

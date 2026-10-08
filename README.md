@@ -1,29 +1,12 @@
-# iPhone 18 Pro Unified Photography App — Batch 11
+# iPhone 18 Pro 攝影大師 — Unified Camera / Photos Edit
 
-Batch 11 is the **Field UX** release. It keeps the unified Capture → Photographic Style → Edit model and adds a scene-level display mode designed for actual use while holding an iPhone.
+This build merges the Photographer-V2 and Photo-Adjustment data into one GitHub Pages app.
 
-## Scene view modes
+## Main views
+1. **拍攝** — scene-based Camera guidance.
+2. **後製** — Photos Edit recipes.
+3. **全部** — all capture and edit items in one level, browsable by tags.
 
-### 📱 現場簡潔版
-Shows only the information most useful while shooting:
-- current capture mode
-- one-glance summary
-- required parameters
-- recommended Photographic Styles
-- recommended edit recipes
-- short field-use reminders
+The app deliberately does not expose a top-level Style or Hardware section. Camera Photographic Style and Photos edit Style are treated as different controls: Camera Style is a capture-stage system; Photos edit Style is a separate 0–100 intensity control without Tone / Color / Palette / Texture sub-controls.
 
-### 📋 完整參數版
-Shows the complete capture guidance, optional parameters, histogram/format notes, workflow order and notes.
-
-The selected scene view is remembered locally in the browser.
-
-## Data
-The canonical data layer is unchanged:
-- 26 scenes
-- 24 capture parameters
-- 14 Photographic Styles
-- 19 edit recipes (16 original + Japanese A/B/C)
-
-## Deployment
-Upload the complete contents to GitHub Pages. `index.html` and `data/` must remain at the same relative level.
+Scene pages contain only scene-specific capture guidance. General functions such as Histogram and Format / Aspect are documented in `#/guide`.
