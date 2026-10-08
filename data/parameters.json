@@ -116,11 +116,10 @@
       "label": "Photographic Style（攝影風格）",
       "type": "style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "family": "style",
-      "note": "跨拍攝及後製的風格系統",
+      "note": "跨拍攝及後製的風格系統；Photos 後製另設獨立 Style 0–100 控制。",
       "sourceLabel": "攝影風格"
     },
     {
@@ -128,11 +127,10 @@
       "label": "質感（Texture）",
       "type": "style-control",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "family": "style",
-      "note": "Photographic Style 內的質感控制",
+      "note": "Photographic Style 內的質感控制；Photos 後製另設獨立 Style 0–100 控制。",
       "sourceLabel": "質感 Texture"
     },
     {
@@ -140,11 +138,10 @@
       "label": "顆粒（Grain）",
       "type": "style-control",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "family": "style",
-      "note": "Photographic Style 內的顆粒控制",
+      "note": "Photographic Style 內的顆粒控制；Photos 後製另設獨立 Style 0–100 控制。",
       "sourceLabel": "顆粒 Grain"
     },
     {
@@ -152,11 +149,10 @@
       "label": "色調（Tone）",
       "type": "style-control",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "family": "style",
-      "note": "Photographic Style 內的色調控制；不要與後製 Tint 混淆",
+      "note": "Photographic Style 內的色調控制；不要與後製 Tint 混淆；Photos 後製另設獨立 Style 0–100 控制。",
       "sourceLabel": "色調 Tone"
     },
     {

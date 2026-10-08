@@ -63,8 +63,7 @@
       "nameZh": "自然",
       "family": "photographic-style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "保留自然色彩及原本光影層次。",
       "controls": {
@@ -109,7 +108,8 @@
         "食物／餐廳",
         "花卉／微距"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "luminous",
@@ -117,8 +117,7 @@
       "nameZh": "明亮",
       "family": "photographic-style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "提升明亮、通透及光感。",
       "controls": {
@@ -153,7 +152,8 @@
         "日系清新",
         "花卉／微距"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "gold",
@@ -161,8 +161,7 @@
       "nameZh": "金色",
       "family": "photographic-style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "增加暖金色氛圍，適合夕陽及暖色場景。",
       "controls": {
@@ -195,7 +194,8 @@
         "海景／海浪",
         "食物／餐廳"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "amber",
@@ -203,8 +203,7 @@
       "nameZh": "琥珀",
       "family": "photographic-style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "比 Gold 更偏暖及琥珀色。",
       "controls": {
@@ -233,7 +232,8 @@
       "captureUsage": [
         "夕陽／日落"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "light",
@@ -241,8 +241,7 @@
       "nameZh": "輕盈",
       "family": "photographic-style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "偏明亮、柔和及輕盈的視覺方向。",
       "controls": {
@@ -272,7 +271,8 @@
         "陰天",
         "日系清新"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "quiet",
@@ -280,8 +280,7 @@
       "nameZh": "寧靜",
       "family": "photographic-style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "較克制、低調的色彩方向。",
       "controls": {
@@ -310,7 +309,8 @@
       "captureUsage": [
         "街拍／行人"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "dramatic",
@@ -318,8 +318,7 @@
       "nameZh": "戲劇",
       "family": "photographic-style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "增加明暗及色彩戲劇感。",
       "controls": {
@@ -351,7 +350,8 @@
         "建築／古蹟",
         "移軸微型感"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "vibrant",
@@ -359,8 +359,7 @@
       "nameZh": "鮮豔",
       "family": "photographic-style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "增加色彩活力，適合需要更鮮明色彩的場景。",
       "controls": {
@@ -391,7 +390,8 @@
         "移軸微型感",
         "街拍／行人"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "standard",
@@ -399,8 +399,7 @@
       "nameZh": "標準",
       "family": "photographic-style",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "作為調色基礎，不額外加入明顯風格。",
       "controls": {
@@ -433,7 +432,8 @@
           "default": 0
         }
       },
-      "source": "Photo-Adjustment"
+      "source": "Photo-Adjustment",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "soft-skin",
@@ -441,11 +441,11 @@
       "nameZh": "柔膚",
       "family": "texture",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "Photographic Style 的 Texture 選項之一，偏向柔化皮膚質感。",
-      "source": "Photographer-V2 / Photo-Adjustment"
+      "source": "Photographer-V2 / Photo-Adjustment",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "glow",
@@ -453,11 +453,11 @@
       "nameZh": "光暈",
       "family": "texture",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "Photographic Style 的 Texture 選項之一，增加柔和光感。",
-      "source": "Photographer-V2 / Photo-Adjustment"
+      "source": "Photographer-V2 / Photo-Adjustment",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "film",
@@ -465,11 +465,11 @@
       "nameZh": "電影／菲林質感",
       "family": "texture",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "Photographic Style 的 Texture 選項之一；Cinematic 強度屬於此風格系統的控制，而非獨立 Adjustment。",
-      "source": "Photographer-V2 / Photo-Adjustment"
+      "source": "Photographer-V2 / Photo-Adjustment",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "japanese-fresh",
@@ -477,8 +477,7 @@
       "nameZh": "日系清新",
       "family": "japanese",
       "stage": [
-        "capture",
-        "edit"
+        "capture"
       ],
       "description": "明亮、清新、低顆粒及柔和質感的日系方向。",
       "controls": {
@@ -519,7 +518,8 @@
         "人像",
         "街拍／行人"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     },
     {
       "id": "ethereal",
@@ -527,7 +527,7 @@
       "nameZh": "空靈",
       "family": "custom",
       "stage": [
-        "edit"
+        "capture"
       ],
       "description": "Photo-Adjustment 原始方案使用的空靈／空氣感風格；保留原始名稱及數值。",
       "controls": {
@@ -555,7 +555,8 @@
         }
       },
       "captureUsage": [],
-      "source": "Photo-Adjustment (source recipe)"
+      "source": "Photo-Adjustment (source recipe)",
+      "editUsage": "Photos 後製不沿用此相機 Style 細項；後製只使用獨立 0–100 Style 強度。"
     }
   ]
 }

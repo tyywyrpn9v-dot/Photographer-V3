@@ -13,17 +13,12 @@
           "name": "光線"
         }
       ],
-      "description": "",
+      "description": "日出前後的低角度光線，重點是保住天空高光，同時利用暖色與長影塑造層次。",
       "must": [
         {
           "id": "ev",
           "value": "−0.3 ～ −1.0",
           "why": "太陽與雲的高光比地面亮很多，先保天空再決定要不要剪影。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "螢幕在晨光下不可靠，看長條圖右端是否貼邊。"
         },
         {
           "id": "aperture",
@@ -48,19 +43,9 @@
           "why": "光線足夠、手機穩定時保留裁切空間。"
         },
         {
-          "id": "style",
-          "value": "Natural 或 Gold",
-          "why": "Natural 保晨霧層次；Gold 加強暖色。避免 Vibrant 把天空做成塑膠藍。"
-        },
-        {
           "id": "wb",
           "value": "AWB 或日光",
           "why": "想保留冷藍黎明用日光；想更暖用 AWB。"
-        },
-        {
-          "id": "format",
-          "value": "HEIF Max 或 ProRAW",
-          "why": "高光對比較大，後期有機會救回雲的細節。"
         }
       ],
       "why": [],
@@ -93,7 +78,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "日出 Sunrise",
+      "fit": "日出、晨曦、山景、海邊及城市天際線。",
+      "avoid": "不要讓天空高光貼住右邊；剪影時不要為暗部過度補光。"
     },
     {
       "id": "blue-sky",
@@ -107,7 +95,7 @@
           "name": "光線"
         }
       ],
-      "description": "",
+      "description": "晴朗日間以控制高光及保持藍天純度為主，避免天空因測光而變白。",
       "must": [
         {
           "id": "ev",
@@ -135,16 +123,6 @@
           "id": "mp",
           "value": "48MP",
           "why": "日光充足，細節與裁切都划算。"
-        },
-        {
-          "id": "style",
-          "value": "Natural；飽和不夠再 Vibrant、Tone −5～−15",
-          "why": "Vibrant 很容易過。先 Natural 再微量加。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "白雲一爆就沒有層次。"
         }
       ],
       "why": [],
@@ -174,7 +152,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "藍天 Blue Sky",
+      "fit": "晴天、天台、草地、山景、建築及海邊。",
+      "avoid": "不要對天空過度加曝光或後期猛加飽和。"
     },
     {
       "id": "overcast",
@@ -188,17 +169,12 @@
           "name": "光線"
         }
       ],
-      "description": "",
+      "description": "陰天光線柔和而平坦，適合保留細節，再以曝光及色彩控制畫面通透度。",
       "must": [
         {
           "id": "ev",
           "value": "+0.3 ～ +0.7",
           "why": "陰天測光偏暗，但加太多天空會變一張白紙。"
-        },
-        {
-          "id": "style",
-          "value": "Luminous 或 Light",
-          "why": "陰天本來就平，靠提亮與通透，不要 Dramatic 硬做對比。"
         },
         {
           "id": "focus",
@@ -255,7 +231,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "陰暗 Overcast",
+      "fit": "陰天、人像、食物、植物及流水。",
+      "avoid": "不要盲目大幅增加對比；天空仍要避免完全失去層次。"
     },
     {
       "id": "sunset",
@@ -269,17 +248,12 @@
           "name": "光線"
         }
       ],
-      "description": "",
+      "description": "夕陽高光與前景反差大，先保留太陽及天空色彩，再決定是否保留剪影。",
       "must": [
         {
           "id": "ev",
           "value": "−0.7 ～ −1.3",
           "why": "優先保留太陽與彩霞。前景暗成剪影通常比硬拉陰影自然。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "太陽一爆就只剩白洞。"
         },
         {
           "id": "aperture",
@@ -298,11 +272,6 @@
         }
       ],
       "options": [
-        {
-          "id": "style",
-          "value": "Gold 或 Amber",
-          "why": "強化金與橙，不要再用 Tone 狂壓。"
-        },
         {
           "id": "tone",
           "value": "−10 ～ −20",
@@ -348,7 +317,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "日落 Sunset",
+      "fit": "日落、海邊、山景、城市天際線。",
+      "avoid": "不要以暗部為主要測光對象，否則夕陽容易爆光。"
     },
     {
       "id": "milky-way",
@@ -362,7 +334,7 @@
           "name": "夜拍"
         }
       ],
-      "description": "",
+      "description": "低光環境以穩定、對焦無限遠及控制高 ISO 噪點為核心，保留星點細節。",
       "must": [
         {
           "id": "zoom",
@@ -417,16 +389,6 @@
           "why": "夜間堆疊通常不是真正的 48MP 優勢，24MP 更穩。"
         },
         {
-          "id": "format",
-          "value": "ProRAW",
-          "why": "星空後期要拉陰影與色溫。"
-        },
-        {
-          "id": "style",
-          "value": "Natural",
-          "why": "不要 Luminous 把光害放大。"
-        },
-        {
           "id": "ev",
           "value": "0 ～ +0.3",
           "why": "先試拍，光害重就降、星星太暗再加。"
@@ -463,7 +425,10 @@
         "shutter"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "銀河 Milky Way",
+      "fit": "無光害郊外、山區、海邊及晴朗無月夜。",
+      "avoid": "避免城市光害及強月光；不要手持長時間曝光。"
     },
     {
       "id": "moon",
@@ -477,7 +442,7 @@
           "name": "夜拍"
         }
       ],
-      "description": "",
+      "description": "以月面高光為主要曝光對象，利用長焦及穩定支撐保留月面紋理。",
       "must": [
         {
           "id": "zoom",
@@ -500,11 +465,6 @@
           "why": "黑夜裡對焦極易飄到天空。"
         },
         {
-          "id": "histogram",
-          "value": "開",
-          "why": "月面必須離開右緣，才能看到隕石坑。"
-        },
-        {
           "id": "live",
           "value": "關",
           "why": "減少多餘處理，手持更乾脆。"
@@ -525,11 +485,6 @@
           "id": "tripod",
           "value": "強烈建議",
           "why": "100mm 等效手持很容易微震。"
-        },
-        {
-          "id": "style",
-          "value": "Natural",
-          "why": "不要把月亮做成黃色濾鏡。"
         }
       ],
       "why": [],
@@ -559,7 +514,10 @@
         "shutter"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "明月 Moonlight",
+      "fit": "明月、月面特寫及月亮配合地景。",
+      "avoid": "不要按一般夜景方式大幅提亮，否則月面會變成白圓。"
     },
     {
       "id": "city-night",
@@ -573,7 +531,7 @@
           "name": "夜拍"
         }
       ],
-      "description": "",
+      "description": "城市夜景以燈光高光與暗部細節平衡為主，避免招牌及街燈爆光。",
       "must": [
         {
           "id": "zoom",
@@ -606,16 +564,6 @@
           "id": "mp",
           "value": "手持 24MP；腳架靜態可 48MP",
           "why": "夜拍高像素不一定更細，先求穩定。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "盯高光，不是盯暗部。"
-        },
-        {
-          "id": "style",
-          "value": "Dramatic 或 Natural",
-          "why": "Dramatic 適合濕地反光；Natural 較真實。"
         },
         {
           "id": "tone",
@@ -661,7 +609,10 @@
         "timer"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "燈光 City Night",
+      "fit": "城市街道、建築、商業區及夜間人流。",
+      "avoid": "不要只追求畫面變亮；強光源附近要保留細節。"
     },
     {
       "id": "car-trails",
@@ -675,7 +626,7 @@
           "name": "夜拍"
         }
       ],
-      "description": "",
+      "description": "車軌以固定機位及較長曝光累積光線，讓車燈形成連續線條。",
       "must": [
         {
           "id": "tripod",
@@ -720,11 +671,6 @@
           "why": "夜間長曝求穩定，不必 48MP。"
         },
         {
-          "id": "histogram",
-          "value": "開",
-          "why": "車燈一爆，軌跡就變成死白帶。"
-        },
-        {
           "id": "wb",
           "value": "AWB",
           "why": "頭燈偏暖、尾燈偏紅，AWB 較能同時交代。"
@@ -763,7 +709,10 @@
         "shutter"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "車軌 Car Trial",
+      "fit": "夜間道路、天橋及城市高架道路。",
+      "avoid": "不要手持；避免曝光過長令路牌及招牌完全爆光。"
     },
     {
       "id": "silky-water",
@@ -777,7 +726,7 @@
           "name": "水"
         }
       ],
-      "description": "",
+      "description": "以較慢快門把流水化成連續絲絹感，同時保持岩石及環境輪廓。",
       "must": [
         {
           "id": "tripod",
@@ -822,11 +771,6 @@
           "why": "大白天夜間模式通常不會給你 2 秒。"
         },
         {
-          "id": "format",
-          "value": "ProRAW",
-          "why": "白水高光後期較有救。"
-        },
-        {
           "id": "mp",
           "value": "48MP（完全固定時）",
           "why": "岩石質感值得。"
@@ -866,7 +810,10 @@
         "shutter"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "瀑布 Silky Waterfall",
+      "fit": "瀑布、溪流、海浪及其他流動水面。",
+      "avoid": "不要在沒有穩定支撐時使用極慢快門；強光下要注意過曝。"
     },
     {
       "id": "water-splash",
@@ -880,7 +827,7 @@
           "name": "水"
         }
       ],
-      "description": "",
+      "description": "用較快快門凝固水滴及飛濺形狀，重點是清晰捕捉瞬間。",
       "must": [
         {
           "id": "shutter",
@@ -954,7 +901,10 @@
         "shutter"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "水花 Water Splash",
+      "fit": "水花、波浪、倒水、運動中的液體。",
+      "avoid": "不要使用慢快門；連拍及預判時機通常比後期銳化更重要。"
     },
     {
       "id": "starburst",
@@ -968,7 +918,7 @@
           "name": "夜拍"
         }
       ],
-      "description": "",
+      "description": "利用小光圈及點狀強光形成星芒，兼顧燈光及周邊暗部。",
       "must": [
         {
           "id": "zoom",
@@ -989,11 +939,6 @@
           "id": "focus",
           "value": "點遠景",
           "why": "星芒在無限遠附近最清楚。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "控制燈點高光。"
         }
       ],
       "options": [
@@ -1001,11 +946,6 @@
           "id": "mp",
           "value": "48MP（穩定時）",
           "why": "燈絲與衍射細節細。"
-        },
-        {
-          "id": "style",
-          "value": "Natural 或 Dramatic",
-          "why": "看要真實還是對比。"
         },
         {
           "id": "night",
@@ -1038,7 +978,10 @@
         "style"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "星芒 Starburst",
+      "fit": "城市夜景、街燈、夕陽及逆光強光源。",
+      "avoid": "不要讓強光源長時間貼近畫面邊緣而爆光；避免鏡頭污跡。"
     },
     {
       "id": "backlight",
@@ -1052,17 +995,12 @@
           "name": "光線"
         }
       ],
-      "description": "",
+      "description": "逆光拍攝先決定保留天空高光還是主體輪廓，再以曝光鎖定效果。",
       "must": [
         {
           "id": "ev",
           "value": "剪影 −0.7～−1.3；保留臉 0～+0.7",
           "why": "同一場背光有兩種照片，先選意圖再調。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "背光高光一定在打架，不能只看預覽。"
         },
         {
           "id": "focus",
@@ -1082,19 +1020,9 @@
           "why": "適度分離主體；f/1.48 在逆光下焦外容易發糊光斑。"
         },
         {
-          "id": "style",
-          "value": "Natural 或 Luminous",
-          "why": "Luminous 幫忙留暗部，剪影則用 Natural。"
-        },
-        {
           "id": "live",
           "value": "開",
           "why": "逆光表情瞬間可以事後選幀。"
-        },
-        {
-          "id": "format",
-          "value": "ProRAW",
-          "why": "逆光動態範圍大。"
         }
       ],
       "why": [],
@@ -1121,7 +1049,10 @@
         "style"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "背光 Backlight",
+      "fit": "日落、人像、樹木、建築及窗邊。",
+      "avoid": "不要同時追求天空與暗部完全均衡；必要時接受剪影。"
     },
     {
       "id": "dark",
@@ -1135,7 +1066,7 @@
           "name": "夜拍"
         }
       ],
-      "description": "",
+      "description": "陰暗環境以保留可用暗部細節及控制噪點為主，避免盲目拉高曝光。",
       "must": [
         {
           "id": "zoom",
@@ -1175,11 +1106,6 @@
           "why": "減少流程。"
         },
         {
-          "id": "style",
-          "value": "Luminous",
-          "why": "提亮可見度，但不要再加 Grain。"
-        },
-        {
           "id": "wb",
           "value": "AWB；鎢絲燈室內偏黃可試 3200K 預設",
           "why": "混合光源先 AWB。"
@@ -1217,7 +1143,10 @@
         "wb"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "fit": "昏暗室內、夜間街道及低光環境。",
+      "avoid": "不要為了看清所有暗部而令燈光高光爆掉。",
+      "title": "dark"
     },
     {
       "id": "portrait",
@@ -1231,7 +1160,7 @@
           "name": "人物"
         }
       ],
-      "description": "",
+      "description": "人像以膚色、眼睛對焦及背景分離為核心，避免背景搶走主體。",
       "must": [
         {
           "id": "portrait-mode",
@@ -1270,11 +1199,6 @@
         }
       ],
       "options": [
-        {
-          "id": "style",
-          "value": "Natural 或 Gold + Soft Skin",
-          "why": "膚色優先。不要 Vibrant。"
-        },
         {
           "id": "texture",
           "value": "Soft Skin（15 左右）",
@@ -1330,7 +1254,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "人像 Portrait",
+      "fit": "人物近照、半身像及自然光人像。",
+      "avoid": "不要把對焦點放在背景；強逆光時注意臉部曝光。"
     },
     {
       "id": "env-portrait",
@@ -1344,7 +1271,7 @@
           "name": "人物"
         }
       ],
-      "description": "",
+      "description": "環境人像同時交代人物及所在地方，人物清晰之餘保留背景故事。",
       "must": [
         {
           "id": "focus",
@@ -1379,19 +1306,9 @@
           "why": "開人像模式方便事後微調。"
         },
         {
-          "id": "style",
-          "value": "Natural 或 Luminous",
-          "why": "現場色彩要可信。"
-        },
-        {
           "id": "live",
           "value": "開",
           "why": "等自然表情。"
-        },
-        {
-          "id": "aspect",
-          "value": "4:3",
-          "why": "後期可裁 4:5 或 16:9。"
         }
       ],
       "why": [],
@@ -1423,7 +1340,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "fit": "旅遊、街拍、建築前人物及生活紀錄。",
+      "avoid": "不要把背景壓得太散，否則環境資訊會消失。",
+      "title": "env-portrait"
     },
     {
       "id": "tilt-shift",
@@ -1437,7 +1357,7 @@
           "name": "風景"
         }
       ],
-      "description": "",
+      "description": "利用淺景深及構圖把真實場景塑造成微型模型般的視覺效果。",
       "must": [
         {
           "id": "zoom",
@@ -1465,11 +1385,6 @@
           "id": "aperture",
           "value": "若在 1x，可 f/1.48 當輔助",
           "why": "只是輔助，不是主因。"
-        },
-        {
-          "id": "style",
-          "value": "Vibrant 或 Luminous",
-          "why": "玩具色彩。不要 Natural 太平。"
         },
         {
           "id": "mp",
@@ -1506,7 +1421,10 @@
         "style"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "移軸 Tilt Shift",
+      "fit": "高角度城市、建築、街道及細小人物群。",
+      "avoid": "平視角度及沒有明確前中後景的畫面效果較弱。"
     },
     {
       "id": "japanese-fresh",
@@ -1520,17 +1438,12 @@
           "name": "靜物"
         }
       ],
-      "description": "",
+      "description": "以明亮、柔和及清新的色彩呈現日系生活感，避免過度飽和。",
       "must": [
         {
           "id": "ev",
           "value": "+0.3 ～ +0.7",
           "why": "清新感來自「剛剛好的亮」，不是濾鏡。"
-        },
-        {
-          "id": "style",
-          "value": "Light 或 Luminous",
-          "why": "通透、低對比。Dramatic／Vibrant 會立刻不再日系。"
         },
         {
           "id": "tone",
@@ -1600,7 +1513,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "fit": "窗邊、街道、植物、旅遊及日常生活。",
+      "avoid": "不要同時大幅提升對比及飽和度，以免失去清透感。",
+      "title": "japanese-fresh"
     },
     {
       "id": "mountain",
@@ -1614,7 +1530,7 @@
           "name": "風景"
         }
       ],
-      "description": "",
+      "description": "大景深風景以完整呈現前中後景為主，利用曝光保留天空及地景細節。",
       "must": [
         {
           "id": "aperture",
@@ -1632,11 +1548,6 @@
           "why": "超焦距：中遠景清楚，近景也大致能接受。"
         },
         {
-          "id": "histogram",
-          "value": "開",
-          "why": "天空一爆，山就沒有天氣。"
-        },
-        {
           "id": "grid",
           "value": "開",
           "why": "山脊與地平線歪了比像素不夠更致命。"
@@ -1652,16 +1563,6 @@
           "id": "mp",
           "value": "48MP",
           "why": "細節與後期裁切。"
-        },
-        {
-          "id": "style",
-          "value": "Natural",
-          "why": "不要把山做成明信片 verdant。"
-        },
-        {
-          "id": "format",
-          "value": "HEIF Max 或 ProRAW",
-          "why": "天地反差大。"
         }
       ],
       "why": [],
@@ -1690,7 +1591,10 @@
         "style"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "風景 Landscape",
+      "fit": "山景、湖景、海岸及大範圍自然景觀。",
+      "avoid": "不要只對天空或最暗前景測光；避免霧霾時過度加對比。"
     },
     {
       "id": "seascape",
@@ -1704,7 +1608,7 @@
           "name": "水"
         }
       ],
-      "description": "",
+      "description": "海景以天空、海面及地平線的層次為主，按光線決定偏自然或暖色表現。",
       "must": [
         {
           "id": "shutter",
@@ -1720,11 +1624,6 @@
           "id": "focus",
           "value": "對前景浪或礁石",
           "why": "對到天空會整張後焦。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "海邊螢幕看起來永遠夠亮。"
         }
       ],
       "options": [
@@ -1778,7 +1677,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "fit": "海邊、海浪、日出日落及晴天海景。",
+      "avoid": "不要讓地平線傾斜；強反光海面要留意高光。",
+      "title": "seascape"
     },
     {
       "id": "fog",
@@ -1792,7 +1694,7 @@
           "name": "光線"
         }
       ],
-      "description": "",
+      "description": "霧景保留低對比與空氣層次，利用前景主體建立深度。",
       "must": [
         {
           "id": "ev",
@@ -1800,19 +1702,9 @@
           "why": "霧是亮的，相機卻把它當中灰，結果拍成髒灰。"
         },
         {
-          "id": "style",
-          "value": "Luminous 或 Light",
-          "why": "留住柔層次。Dramatic 會毀霧。"
-        },
-        {
           "id": "focus",
           "value": "對可見的山脊或主體",
           "why": "低對比下對焦會迷航。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "加曝光時防止白霧裁切。"
         }
       ],
       "options": [
@@ -1855,7 +1747,10 @@
         "style"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "fit": "山霧、森林、城市霧景及雲海。",
+      "avoid": "不要過度拉高對比或清晰度，否則霧感會消失。",
+      "title": "fog"
     },
     {
       "id": "architecture",
@@ -1869,7 +1764,7 @@
           "name": "風景"
         }
       ],
-      "description": "",
+      "description": "建築拍攝重視線條、垂直線及高光細節，避免廣角變形破壞比例。",
       "must": [
         {
           "id": "grid",
@@ -1902,16 +1797,6 @@
           "id": "mp",
           "value": "48MP",
           "why": "磚、木、雕花經得起放大。"
-        },
-        {
-          "id": "style",
-          "value": "Natural 或 Dramatic",
-          "why": "石材用 Dramatic；木與粉牆用 Natural。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "白牆是高光陷阱。"
         }
       ],
       "why": [],
@@ -1938,7 +1823,10 @@
         "style"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "建築 Architecture",
+      "fit": "建築物、古蹟、室內空間及城市幾何。",
+      "avoid": "不要把重要垂直線放在極端廣角邊緣；留意玻璃反光。"
     },
     {
       "id": "street",
@@ -1952,7 +1840,7 @@
           "name": "人物"
         }
       ],
-      "description": "",
+      "description": "街拍以快速反應及自然瞬間為主，保留人物與環境關係。",
       "must": [
         {
           "id": "focus",
@@ -1980,11 +1868,6 @@
           "id": "live",
           "value": "開",
           "why": "不可預測的手勢可以事後選。"
-        },
-        {
-          "id": "style",
-          "value": "Natural、Quiet 或單色",
-          "why": "街頭容得下低飽和或黑白。"
         },
         {
           "id": "mp",
@@ -2026,7 +1909,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "fit": "城市街道、行人、店舖及生活紀錄。",
+      "avoid": "不要為了每張照片完全手動設定而錯過瞬間；注意背景雜物。",
+      "title": "street"
     },
     {
       "id": "sports",
@@ -2040,7 +1926,7 @@
           "name": "動態"
         }
       ],
-      "description": "",
+      "description": "動態場景以快門速度及持續對焦為核心，先確保主體動作清晰。",
       "must": [
         {
           "id": "shutter",
@@ -2115,7 +2001,10 @@
         "shutter"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "動感 Sports",
+      "fit": "運動、跑步、單車、街頭活動及快速移動人物。",
+      "avoid": "不要使用過慢快門凝固高速動作；背景太亂時要重新取景。"
     },
     {
       "id": "food",
@@ -2129,7 +2018,7 @@
           "name": "靜物"
         }
       ],
-      "description": "",
+      "description": "食物拍攝以光線方向、白平衡及細節層次為主，保持食物自然色澤。",
       "must": [
         {
           "id": "zoom",
@@ -2145,11 +2034,6 @@
           "id": "ev",
           "value": "0 ～ +0.7",
           "why": "餐廳偏暗，但白碟、湯汁反光會爆。"
-        },
-        {
-          "id": "histogram",
-          "value": "開",
-          "why": "專門盯白色餐盤。"
         }
       ],
       "options": [
@@ -2162,11 +2046,6 @@
           "id": "aperture",
           "value": "f/1.8–2.8",
           "why": "突出主菜，保留一點桌面。f/1.48 可能只清楚一片香菜。"
-        },
-        {
-          "id": "style",
-          "value": "Natural 或 Gold，飽和克制",
-          "why": "食物失真比欠飽和更糟。"
         },
         {
           "id": "flash",
@@ -2202,7 +2081,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "美食 Food",
+      "fit": "餐廳、咖啡店、甜品及桌面靜物。",
+      "avoid": "避免混合色溫造成食物偏色；不要過度銳化食物表面。"
     },
     {
       "id": "macro",
@@ -2216,7 +2098,7 @@
           "name": "靜物"
         }
       ],
-      "description": "",
+      "description": "微距以精準對焦及淺景深控制為核心，主體細節比背景資訊更重要。",
       "must": [
         {
           "id": "focus",
@@ -2249,11 +2131,6 @@
           "id": "mp",
           "value": "48MP（無風、穩定）",
           "why": "花瓣紋理與後期裁切。"
-        },
-        {
-          "id": "style",
-          "value": "Natural 或 Luminous",
-          "why": "花色已經夠，不要 Vibrant。"
         },
         {
           "id": "zoom",
@@ -2295,7 +2172,10 @@
         "japanese-b",
         "japanese-c"
       ],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "微距 Marco",
+      "fit": "花卉、昆蟲、食物細節及小型物件。",
+      "avoid": "不要依賴自動對焦在極近距離反覆搜尋；留意風造成的主體移動。"
     },
     {
       "id": "video-24p",
@@ -2309,7 +2189,7 @@
           "name": "動態"
         }
       ],
-      "description": "",
+      "description": "影片以一致快門及固定白平衡維持自然動態模糊及穩定色彩。",
       "must": [
         {
           "id": "shutter",
@@ -2333,16 +2213,6 @@
         }
       ],
       "options": [
-        {
-          "id": "format",
-          "value": "日常 4K30 HDR；要調色用 Log 2／ProRes",
-          "why": "Log 不是日常濾鏡，是後期流程。"
-        },
-        {
-          "id": "style",
-          "value": "錄影前定風格，或 Log 後期再上",
-          "why": "不要邊錄邊猛轉色盤。"
-        },
         {
           "id": "grid",
           "value": "開",
@@ -2372,7 +2242,10 @@
         "shutter"
       ],
       "editPresetRefs": [],
-      "source": "Photographer-V2"
+      "source": "Photographer-V2",
+      "title": "影片 Video",
+      "fit": "電影感短片、旅遊片段及敘事影片。",
+      "avoid": "不要每個鏡頭都讓自動白平衡及曝光大幅漂移。"
     }
   ]
 }
