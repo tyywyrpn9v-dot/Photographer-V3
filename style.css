@@ -315,3 +315,22 @@ body,button,input,select,textarea{font-family:inherit}
   .filter-primary .chip { flex:1 1 0; min-width:0; }
   .filter-secondary .chip { padding-left:9px; padding-right:9px; }
 }
+
+/* Batch 17 fixes */
+.theme-switch{border:0!important;padding:0!important;background:transparent!important;box-shadow:none!important}
+.theme-switch button,.theme-switch button.active{border:0!important;background:transparent!important;color:var(--fg)!important;box-shadow:none!important}
+.theme-switch button{width:40px;height:38px;font-size:20px}
+.top-tabs{position:sticky!important;top:0!important;z-index:110!important;background:color-mix(in srgb,var(--bg) 94%,transparent)!important;backdrop-filter:blur(12px)!important;border-top:1px solid var(--line)!important}
+.item-card[data-open]{cursor:pointer}
+.item-card .card-open{cursor:pointer}
+.item-card .shot{display:block;background:var(--chip);min-height:80px}
+.item-card .fav{background:color-mix(in oklab,var(--card) 88%,transparent);}
+@media(max-width:640px){
+ .top-tabs{top:0!important}
+ .filter-primary{display:grid!important;grid-template-columns:1fr 1fr;gap:6px!important}
+ .filter-primary .chip{min-width:0!important;width:100%}
+ .filter-primary .chip:nth-child(3){grid-column:1}
+ .filter-primary .chip:nth-child(4){grid-column:2}
+ .filter-secondary{display:flex!important;overflow-x:auto!important;flex-wrap:nowrap!important}
+ .filter-secondary .chip{width:auto!important;min-width:max-content!important}
+}
